@@ -1,0 +1,30 @@
+#dataTable td{
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 1px solid #ddd;
+
+}
+
+thead tr{
+    border: solid;
+}
+
+#dataTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #04AA6D;
+    color: white;
+    border: 1px solid #ddd;
+}
+
+#dataTable {
+    margin-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#dataTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}

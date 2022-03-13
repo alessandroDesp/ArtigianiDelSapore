@@ -1,0 +1,15 @@
+.slider{
+    padding: 15px;
+    background-color: rgb(129 137 128);
+    text-align: center;
+}
+
+section div img{
+    text-align: center;
+    height: 500px;
+}
+.prodotti{
+    padding-top: 20px;
+    column-count: 3;
+    text-align: center;
+}

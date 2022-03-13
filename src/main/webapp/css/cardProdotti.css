@@ -1,0 +1,64 @@
+.card{
+    padding: 15px;
+}
+.card-body{
+    background-color: antiquewhite;
+    height: 400px;
+    position: relative;
+}
+
+.card-image{
+    padding: 10px;
+    height: 200px;
+}
+
+.image-box{
+    text-align: center;
+}
+.card-image:hover{
+    opacity: 0.3;
+    color: black;
+    font-weight: bold;
+}
+
+.card-title {
+    padding: 5px;
+    text-align: center;
+}
+
+.card-text{
+    opacity: 0;
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
+
+.cardAttiva .card-text{
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+.cardAttiva .card-image{
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.card-text div{
+    padding: 3px;
+}
+
+.card-text div label{
+    font-weight: bold;
+}
+
+.card-button{
+    right: 10px;
+    bottom: 10px;
+    position: absolute;
+}
+
+.card-button button{
+    background-color: #04AA6D;
+    color: white;
+    padding: 7px 10px;
+    cursor: pointer;
+}

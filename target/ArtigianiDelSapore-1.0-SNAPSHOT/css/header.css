@@ -1,0 +1,64 @@
+.header a,.header span{
+    padding:16px;
+    margin-left: 1%;
+}
+
+.autenticazione{
+    padding: 0px!important;
+}
+.header a:hover,.header span:hover{
+    color: orange;
+    cursor: pointer;
+}
+.header{
+    background-color: rgb(240 245 245);
+    text-align: center;
+    padding: 35px;
+}
+.header-nav{
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+}
+
+.autenticazione-button{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(73,212,38);
+    cursor: pointer;
+}
+
+.container-button{
+    padding-left: 10px;
+}
+.autenticazione button:hover {
+    opacity: 0.8;
+}
+
+a{
+    text-decoration: none!important;
+    color: black;
+}
+
+a:hover{
+    color: orange;
+    cursor: pointer;
+}

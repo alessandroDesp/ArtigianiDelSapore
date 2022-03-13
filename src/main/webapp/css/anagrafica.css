@@ -1,0 +1,45 @@
+.vh30{
+    height: 30vh;
+    margin-top: 2%;
+}
+
+.form{
+    width: 80%;
+}
+
+.div-container{
+    margin-left: 15%;
+}
+
+.button-modifica{
+    padding: 10px;
+}
+
+.form input[type=text], input[type=password],input[type=date] {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.button-modifica button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 250px;
+    margin-top: 20px;
+}
+
+.column{
+    padding: 5px;
+    column-count: 2;
+}
+
+.modifica-password{
+    margin-top: 50px;
+}

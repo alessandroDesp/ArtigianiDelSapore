@@ -1,0 +1,41 @@
+.vh100{
+    height: 30vh;
+    margin-top: 5%;
+}
+
+.form-registrazione{
+    width: 50%;
+    border: 3px solid #f1f1f1;
+}
+
+.div-container{
+    margin-left: 35%;
+}
+
+.button-registrati{
+    padding: 10px;
+}
+
+.form-registrazione input[type=text], input[type=password],input[type=date] {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.button-registrati button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.column-registrazione{
+    padding: 5px;
+    column-count: 2;
+}

@@ -1,0 +1,19 @@
+.areaUtente{
+    background-color: rgb(106 98 227);
+    text-align: center;
+    padding: 15px;
+}
+.areaUtente-nav{
+    width: 100%;
+}
+
+.areaUtente a{
+    padding:16px;
+    margin-left: 1%;
+    text-decoration: none!important;
+    color: white;
+}
+
+.areaUtente a:hover{
+    color: orange;
+}
