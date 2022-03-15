@@ -15,6 +15,7 @@
     </jsp:include>
     <link rel="stylesheet" href="css/gestioneProdotti.css">
     <link rel="stylesheet" href="css/dataTable.css">
+    <link rel="stylesheet" href="css/tooltipStyle.css">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
@@ -24,6 +25,7 @@
     int tipoChiamata = (Integer) request.getAttribute("Tipo");
 %>
 <section class="vh30">
+    <button class="creazione-button">Crea nuovo Prodotto</button>
     <table id="dataTable" class="display" style="width:100%">
         <thead>
         <tr>
@@ -33,6 +35,7 @@
             <th>Sconto</th>
             <th>Quantità attuale</th>
             <th>Quantità venduta</th>
+            <th>Azione</th>
         </tr>
         </thead>
         <tbody>
@@ -45,6 +48,11 @@
             <td><%=p.getSconto()%></td>
             <td><%=p.getQuantitaAttuale()%></td>
             <td><%=p.getQuantitaVenduta()%></td>
+            <td>
+                <a class="fas fa-edit tooltip">
+                    <span class="tooltip-text">Modifica Prodotti</span>
+                </a>
+            </td>
         </tr>
         <%}%>
 
@@ -57,6 +65,7 @@
             <th>Sconto</th>
             <th>Quantità attuale</th>
             <th>Quantità venduta</th>
+            <th>Azione</th>
         </tr>
         </tfoot>
     </table>

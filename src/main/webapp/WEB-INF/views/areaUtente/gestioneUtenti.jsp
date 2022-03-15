@@ -13,8 +13,11 @@
     <jsp:include page="../partials/head.jsp">
         <jsp:param name="title" value="Gestione utenti"/>
     </jsp:include>
-    <link rel="stylesheet" href="css/gestioneUtenti.css">
     <link rel="stylesheet" href="css/dataTable.css">
+    <link rel="stylesheet" href="css/tooltipStyle.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <script src="script/modal.js"></script>
+    <script src="script/gestioneUtenti.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
@@ -45,7 +48,11 @@
             <td><%=Utilita.convertDateToView(ut.getDataNascita())%></td>
             <td><%=ut.getEmail()%></td>
             <td><%=Utilita.getRuoloString(ut.getKsRuolo())%></td>
-            <td>bla</td>
+            <td>
+                <a class="fas fa-edit tooltip myBtn" onclick="iconModificaPermessi(<%=ut.getIdUtente()%>,<%=ut.getKsRuolo()%>)">
+                  <span class="tooltip-text">Modifica permessi</span>
+                </a>
+            </td>
 
         </tr>
         <%}%>
@@ -67,4 +74,26 @@
 </section>
 
 </body>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Modifica permessi</h2>
+        </div>
+        <div class="modal-body">
+            <label for="selectPermessi">Permessi</label>
+            <select class="form-control" id="selectPermessi">
+                <option value="1">Admin</option>
+                <option value="2">Assistente</option>
+                <option value="3">Utente</option>
+            </select>
+            <input type="hidden" id="idUtenteInput" value="">
+        </div>
+        <div class="modal-footer">
+            <button class="autenticazione-button" onclick="modificaPermessi()">Conferma</button>
+        </div>
+    </div>
+</div>
 </html>

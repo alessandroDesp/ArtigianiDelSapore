@@ -1,0 +1,12 @@
+.creazione-button{
+    padding: 4px;
+    width: 150px;
+    margin-top: 20px;
+    background-color: rgb(73,212,38);
+    cursor: pointer;
+}
+
+#dataTable {
+    margin-top: 10px!important;
+
+}

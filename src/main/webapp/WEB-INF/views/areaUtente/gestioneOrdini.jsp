@@ -16,7 +16,7 @@
     </jsp:include>
     <link rel="stylesheet" href="css/gestioneOrdini.css">
     <link rel="stylesheet" href="css/dataTable.css">
-    <link rel="stylesheet" href="css/gestioneOrdini.css">
+    <link rel="stylesheet" href="css/tooltipStyle.css">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
@@ -52,13 +52,16 @@
                 <td><%=Utilita.getStatoString(o.getKsStatoOrdini())%></td>
                 <td><% switch(o.getKsStatoOrdini()){
                         case 1:%>
-                        <a class="fas fa-wallet">
+                        <a class="fas fa-wallet tooltip" href="Pagamento?id=<%=o.getIdOrdini()%>">
+                            <span class="tooltip-text">Paga</span>
                         <%break;
                         case 2:%>
-                        <i class="far fa-circle confermata">
+                        <i class="far fa-circle confermata tooltip">
+                            <span class="tooltip-text">Confermata</span>
                         <%break;
                          case 3:%>
-                        <i class="far fa-circle consegnata">
+                        <i class="far fa-circle consegnata tooltip">
+                            <span class="tooltip-text">Consegnata</span>
                         <%break;
                 } %>
 
