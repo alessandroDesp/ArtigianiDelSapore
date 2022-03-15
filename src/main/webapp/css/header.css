@@ -1,3 +1,12 @@
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 .header a,.header span{
     padding:16px;
     margin-left: 1%;
@@ -45,6 +54,7 @@
     height: 30px;
     background-color: rgb(73,212,38);
     cursor: pointer;
+    border-radius: calc(var(--curve) * 1px);
 }
 
 .container-button{

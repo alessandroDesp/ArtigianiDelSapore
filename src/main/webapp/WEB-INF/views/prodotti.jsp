@@ -26,17 +26,22 @@
 <section class="title-Prodotti">
     <h1 class="">Prodotti</h1>
 </section>
-<section class="prodotti">
-    <% for (Prodotti pd : prodotti) { %>
-<jsp:include page="/WEB-INF/views/partials/cardProdotti.jsp">
-    <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
-    <jsp:param name="nome" value="<%=pd.getNome()%>"/>
-    <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
-    <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
-    <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
-</jsp:include>
 
-    <%}%>
+<section id="product-list">
+    <div class="container">
+        <ul class="cards">
+            <% for (Prodotti pd : prodotti) {%>
+               <jsp:include page="/WEB-INF/views/partials/cardProdotti.jsp">
+                   <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
+                   <jsp:param name="nome" value="<%=pd.getNome()%>"/>
+                   <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
+                   <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
+                   <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
+               </jsp:include>
+            <%}%>
+        </ul>
+    </div>
 </section>
+
 </body>
 </html>

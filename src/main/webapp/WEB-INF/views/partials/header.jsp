@@ -39,8 +39,10 @@
         </span>
         <a href="#">Provenienza</a>
         <a href="#">Offerte</a>
-        <input type="text" placeholder="Cerca sul sito">
-        <input type="submit" id="sub" name="sub" value="Cerca">
+        <form action="Search" method="post" style="display: contents;">
+            <input type="text" placeholder="Cerca sul sito" name="sValue">
+            <button type="submit" name="sub">Cerca</button>
+        </form>
         <%if(u==null){%>
             <span class="container-button">
                 <a class="autenticazione" href="Login"><button class="autenticazione-button">Login</button></a>

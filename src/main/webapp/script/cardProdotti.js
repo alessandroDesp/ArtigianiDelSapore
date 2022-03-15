@@ -12,6 +12,7 @@ $(document).ready(function() {
 } );
 
 function aggiungiCarrello(){
+    console.log("add cart");
 
 }
 
