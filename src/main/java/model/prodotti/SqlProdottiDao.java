@@ -37,6 +37,27 @@ public class SqlProdottiDao implements ProdottiDao{
         return p;
     }
 
+    public ArrayList<Prodotti> getProdottoByName(String nProdotto) throws SQLException {
+
+        ArrayList<Prodotti> prodotti = new ArrayList<>();
+
+
+
+        try (Connection con = Connect.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Prodotti WHERE nome LIKE ?",Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, "%" + nProdotto + "%");
+
+            ResultSet rs = ps.executeQuery();
+
+            while ( rs.next() ){
+                prodotti.add(createProdotti(rs));
+            }
+
+        }
+
+        return prodotti;
+    }
+
 
 
     private Prodotti createProdotti(ResultSet rs) throws SQLException {
