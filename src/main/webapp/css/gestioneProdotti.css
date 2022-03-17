@@ -10,3 +10,14 @@
     margin-top: 10px!important;
 
 }
+
+.button-prodotto{
+    padding: 10px;
+}
+
+
+
+.column-prodotto{
+    padding: 5px;
+    column-count: 2;
+}

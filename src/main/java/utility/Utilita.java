@@ -34,6 +34,10 @@ public class Utilita
      */
     public static final String SESSION_LISTADESIDERI="idLsDs";
     /**
+     * Nome dell'attributo carrello all'interno della sessione
+     */
+    public static final String SESSION_CARRELLO="idCa";
+    /**
      * Nome del ID dell'utente per il cookie
      */
     public static final String COOKIE_ID="idUsCo";

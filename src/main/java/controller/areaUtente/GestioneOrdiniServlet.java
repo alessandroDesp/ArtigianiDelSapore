@@ -27,7 +27,12 @@ public class GestioneOrdiniServlet extends HttpServlet {
         {
             OrdiniDao dao = new SqlOrdiniDao();
             try {
-                List<Ordini> listaOrdini = dao.getOrdiniByUtente(us.get().getIdUtente());
+                List<Ordini> listaOrdini;
+                if(us.get().getKsRuolo()==1||us.get().getKsRuolo()==2){
+                    listaOrdini = dao.getAll();
+                }else{
+                    listaOrdini = dao.getOrdiniByUtente(us.get().getIdUtente());
+                }
                 RequestDispatcher requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneOrdini.jsp");
                 request.setAttribute("listaOrdini",listaOrdini);
                 request.setAttribute("Tipo",3);

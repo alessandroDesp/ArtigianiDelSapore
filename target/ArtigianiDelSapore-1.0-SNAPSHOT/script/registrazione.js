@@ -22,7 +22,7 @@ function registrati(){
         data: data,
         success: function (result) {
             if(result.Ris == 1) {
-                alert(result.Mess)
+                if(!alert(result.Mess)){window.location.reload();}
             }else {
                 alert(result.Mess)
             }

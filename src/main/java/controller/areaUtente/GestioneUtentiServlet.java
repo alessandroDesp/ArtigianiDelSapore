@@ -19,7 +19,7 @@ public class GestioneUtentiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Utente> us= UtenteService.getUtente(request);
-        if(!us.isPresent())
+        if(us.get().getKsRuolo()!=1)
         {
             response.sendRedirect("./");
         }

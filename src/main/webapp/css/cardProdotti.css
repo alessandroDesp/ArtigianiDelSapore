@@ -122,6 +122,10 @@
 .card:hover .card__overlay {
     transform: translateY(0);
 }
+.card:hover .card__sconto {
+    margin-bottom: -3em;
+    transition: .2s ease-in-out;
+}
 
 .card__header {
     position: relative;
@@ -166,6 +170,18 @@
     color: #6A515E;
 }
 
+.card__sconto {
+    font-size: 1em;
+    color: white;
+    background: rgb(204, 12, 57);
+    padding: 4px 6px;
+    position: absolute;
+    right: 0;
+    -webkit-transform: rotate(-50deg);
+    margin-bottom: 3em;
+    transition: 0.2s ease-in-out;
+}
+
 .card__tagline {
     display: block;
     margin: 1em 0;
@@ -180,7 +196,7 @@
 }
 
 .card__description {
-    padding: 0 2em 2em;
+    padding: 0 2em 3em;
     margin: 0;
     color: #000;
     font-family: "MockFlowFont";

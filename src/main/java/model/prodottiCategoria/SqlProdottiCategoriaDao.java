@@ -25,6 +25,17 @@ public class SqlProdottiCategoriaDao implements ProdottiCategoriaDao{
         return prodotti;
     }
 
+    public void addProdottiCategoria(int idCategoria,int idProdotto) throws SQLException {
+        try (Connection con = Connect.getConnection()){
+            PreparedStatement ps = con.prepareStatement
+                    ("INSERT INTO ProdottiCategoria (ksProdotti,ksCategoria) value (?,?)",
+                            Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idProdotto);
+            ps.setInt(2, idCategoria);
+            ps.executeUpdate();
+        }
+    }
+
     private ProdottiCategoria createProdottiCategoria(ResultSet rs) throws  SQLException{
         int idProdottiCategoria = rs.getInt("idProdottiCategoria");
         int ksProdotti = rs.getInt("ksProdotti");

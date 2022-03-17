@@ -1,5 +1,8 @@
 package controller.areaUtente;
 
+import model.categoria.Categoria;
+import model.categoria.CategoriaDao;
+import model.categoria.SqlCategoriaDao;
 import model.prodotti.Prodotti;
 import model.prodotti.ProdottiDao;
 import model.prodotti.SqlProdottiDao;
@@ -19,17 +22,20 @@ public class GestioneProdottiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Utente> us= UtenteService.getUtente(request);
-        if(!us.isPresent())
+        if(!((us.get().getKsRuolo()==1) || (us.get().getKsRuolo()==2)))
         {
             response.sendRedirect("./");
         }
         else
         {
-            ProdottiDao dao = new SqlProdottiDao();
+            ProdottiDao daoProdotti = new SqlProdottiDao();
+            CategoriaDao daoCategoria = new SqlCategoriaDao();
             try {
-                List<Prodotti> listaProdotti = dao.getAllProdotti();
+                List<Prodotti> listaProdotti = daoProdotti.getAllProdotti();
+                List<Categoria> listaCategorie = daoCategoria.getAll();
                 RequestDispatcher requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneProdotti.jsp");
                 request.setAttribute("listaProdotti",listaProdotti);
+                request.setAttribute("listaCategorie",listaCategorie);
                 request.setAttribute("Tipo",5);
                 requestDispatcher.forward(request,response);
             } catch (SQLException throwables) {

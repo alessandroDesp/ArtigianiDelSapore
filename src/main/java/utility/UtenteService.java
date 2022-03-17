@@ -54,6 +54,7 @@ public class UtenteService {
                 ListaDesideri ld = daoListaDesideri.getByUtenteId(us.getIdUtente());
                 session.setAttribute(utility.Utilita.SESSION_USER,us);
                 session.setAttribute(Utilita.SESSION_LISTADESIDERI,ld);
+
                 return Optional.of(us);
             }
             catch (UtenteNotFoundException | SQLException | ListaDesideriNotFoundException e)

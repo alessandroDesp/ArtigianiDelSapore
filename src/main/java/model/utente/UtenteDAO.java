@@ -20,4 +20,5 @@ public interface UtenteDAO {
     void doChangePassword( int idUtente, String newPassword) throws SQLException;
     boolean isEmailOld(int idUtente, String email) throws SQLException;
     void doChangeAnagrafica(int idUtente, String nome, String cognome, String cf, Date dataNascita, String email) throws SQLException;
+    void doChangeRuolo( int idUtente, int ruolo) throws SQLException;
 }

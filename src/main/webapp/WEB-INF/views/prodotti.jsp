@@ -35,6 +35,7 @@
                    <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
                    <jsp:param name="nome" value="<%=pd.getNome()%>"/>
                    <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
+                   <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
                    <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
                    <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
                </jsp:include>

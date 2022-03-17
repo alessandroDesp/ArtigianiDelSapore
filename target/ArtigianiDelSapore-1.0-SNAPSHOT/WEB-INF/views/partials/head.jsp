@@ -14,13 +14,12 @@ come numeri di telefono -->
 <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Abilita il salvataggio del sito come webapp -->
 <meta name="apple-mobile-web-app-title" content="levelUp"> <!-- Nome del sito se salvato come webapp -->
 <meta name="apple-mobile-web-app-status-bar-style" content="default"> <!-- Colore della barra di stato -->
-<link rel="apple-touch-icon" href="${context}/images/logo.png"> <!-- Icona nella barra dei preferiti di iOS -->
-<link rel="apple-touch-startup-image" href="${context}/images/logo.png"> <!-- Icona schermata di caricamento -->
-
+<link rel="apple-touch-icon" href="${context}/images/favicon.ico"> <!-- Icona nella barra dei preferiti di iOS -->
+<link rel="apple-touch-startup-image" href="${context}/images/favicon.ico"> <!-- Icona schermata di caricamento -->
 <!-- Tag per la corretta visualizzazione du Android -->
 <meta name="theme-color" content="#000000"> <!-- Colore del sito -->
-<!--<link rel="shortcut icon" href="${context}/images/favicon.ico" type="image/x-icon">
-<link rel="icon" href="${context}/images/favicon.ico" type="image/x-icon">-->
+<link rel="shortcut icon" href="${context}/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${context}/images/favicon.ico" type="image/x-icon">
 <!-- Contenuti di default -->
 <meta charset="UTF-8">
 <title> ${param.title} </title>

@@ -1,10 +1,19 @@
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 .header a,.header span{
     padding:16px;
     margin-left: 1%;
 }
 
 .autenticazione{
-    padding: 0px!important;
+    padding: 0 !important;
 }
 .header a:hover,.header span:hover{
     color: orange;
@@ -45,6 +54,7 @@
     height: 30px;
     background-color: rgb(73,212,38);
     cursor: pointer;
+    border-radius: calc(var(--curve) * 1px);
 }
 
 .container-button{
@@ -62,4 +72,238 @@ a{
 a:hover{
     color: orange;
     cursor: pointer;
+}
+
+
+/** Navbar **/
+
+header{
+    background-color: rgb(240 245 245);
+    /*padding-left: 3rem;*/
+    /*padding-right: 3rem;*/
+}
+
+.dropdown-item{
+
+}
+.no-decoration{
+    list-style: none;
+}
+
+.p-3 {
+    padding: 1rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+.container{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.d-flex {
+    display: flex !important;
+}
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.align-items-center {
+    align-items: center !important;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.justify-content-lg-start {
+    justify-content: flex-start !important;
+}
+
+.mb-2 {
+    margin-bottom: 0.5rem !important;
+}
+
+.mb-lg-0 {
+    margin-bottom: 0 !important;
+}
+
+.text-dark {
+    --bs-text-opacity: 1;
+}
+
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+.nav-header {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #0d6efd;
+    text-decoration: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.me-lg-auto {
+    margin-right: auto !important;
+}
+
+.me-2 {
+    margin-right: 0.5rem !important;
+}
+
+.mb-md-0 {
+    margin-bottom: 0 !important;
+}
+
+.px-2 {
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+}
+
+.link-secondary {
+    color: #6c757d;
+}
+.link-secondary:hover, .link-secondary:focus {
+    color: #565e64;
+}
+
+.link-dark {
+    color: #212529;
+}
+.link-dark:hover, .link-dark:focus {
+    color: #1a1e21;
+}
+
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.text-end {
+    text-align: right !important;
+}
+
+.d-block {
+    display: block !important;
+}
+
+.text-end {
+    text-align: right!important;
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+}
+/*Fine*/
+body{
+    display:flex;
+    flex-direction:column;
+    height:100vh; margin:0;
+}
+
+.py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.my-4 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.border-top {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+.col-md-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+.me-2 {
+    margin-right: 0.5rem !important;
+}
+.mb-md-0 {
+    margin-bottom: 0 !important;
+}
+.bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #6c757d !important;
+}
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+.lh-1 {
+    line-height: 1 !important;
+}
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.ms-3 {
+    margin-left: 1rem !important;
 }

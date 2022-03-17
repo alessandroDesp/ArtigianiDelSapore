@@ -83,16 +83,16 @@
             <h2>Modifica permessi</h2>
         </div>
         <div class="modal-body">
-            <label for="selectPermessi">Permessi</label>
-            <select class="form-control" id="selectPermessi">
-                <option value="1">Admin</option>
-                <option value="2">Assistente</option>
-                <option value="3">Utente</option>
-            </select>
-            <input type="hidden" id="idUtenteInput" value="">
-        </div>
-        <div class="modal-footer">
-            <button class="autenticazione-button" onclick="modificaPermessi()">Conferma</button>
+            <form action="ModificaPermessi" method="post" class="form-tag">
+                <label for="selectPermessi">Permessi</label>
+                <select class="form-control" name ="ruolo" id="selectPermessi">
+                    <option value="1">Admin</option>
+                    <option value="2">Assistente</option>
+                    <option value="3">Utente</option>
+                </select>
+                <input type="hidden" name="idUtente" id="idUtenteInput" value="">
+                <button type="submit" name="sub">Modifica permessi</button>
+            </form>
         </div>
     </div>
 </div>

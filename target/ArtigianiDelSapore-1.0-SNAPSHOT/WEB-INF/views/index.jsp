@@ -10,11 +10,10 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="slider">
-    <div>
-        <img src="images/img2.jpg">
-    </div>
-</section>
+
+<main>
+
+</main>
 <%--
 <section class="prodotti">
     <% for (int i=0;i<6;i++) { %>
@@ -22,5 +21,7 @@
     <%}%>
 </section>
 --%>
+
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>

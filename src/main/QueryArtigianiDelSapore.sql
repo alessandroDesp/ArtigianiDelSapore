@@ -55,7 +55,7 @@ CREATE TABLE Prodotti
 (
 	idProdotti INT NOT NULL AUTO_INCREMENT,
 	nome VARCHAR(65) NOT NULL,
-	prezzo INT NOT NULL,
+	prezzo Float NOT NULL,
     sconto Float NOT NULL,
 	quantitaAttuale INT NOT NULL,
     quantitaVenduta INT NOT NULL,

@@ -11,7 +11,26 @@ $(document).ready(function() {
 
 } );
 
-function aggiungiCarrello(){
+function aggiungiCarrello(idProdotto){
+    var parola = "#quantitaDaAcquistare" + idProdotto;
+    var quantita = $(parola).val()
+    var data ={
+        idProdotto : idProdotto,
+        quantitaDaAcquistare : quantita
+    }
+    $.ajax({
+        url: 'AggiungiAlCarrello',
+        dataType: "json",
+        type: "post",
+        data: data,
+        success: function (result) {
+            if(result.Ris == 1) {
+                alert(result.Mess)
+            }else {
+                alert(result.Mess)
+            }
+        }
+    });
 
 }
 

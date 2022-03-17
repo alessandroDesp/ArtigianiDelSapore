@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ProdottiCategoriaDao {
     List<Prodotti> getProdottiByCategoriaId(int idCategoria) throws SQLException;
+    void addProdottiCategoria(int idCategoria,int idProdotto) throws SQLException;
 }

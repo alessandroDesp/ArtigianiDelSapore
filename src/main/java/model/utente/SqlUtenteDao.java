@@ -150,6 +150,19 @@ public class SqlUtenteDao implements UtenteDAO{
         }
     }
 
+    @Override
+    public void doChangeRuolo( int idUtente, int ruolo) throws SQLException
+    {
+        try (Connection con = Connect.getConnection()) {
+            PreparedStatement ps = con.prepareStatement
+                    ("UPDATE Utente SET ksRuolo=? WHERE idUtente=?",
+                            Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, ruolo);
+            ps.setInt(2, idUtente);
+            ps.executeUpdate();
+        }
+    }
+
 
     private Utente createUtente(ResultSet rs) throws SQLException {
         int idUtente = rs.getInt("idUtente");

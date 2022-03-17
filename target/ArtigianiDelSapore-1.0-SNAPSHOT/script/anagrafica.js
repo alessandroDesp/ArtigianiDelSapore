@@ -54,7 +54,10 @@ function modificaPassword(){
         data: data,
         success: function (result) {
             if(result.Ris == 1) {
-                alert(result.Mess)
+                alert(result.Mess);
+                $("#VecchiaPassword").val("");
+                $("#NuovaPassword").val("");
+                $("#RipetiPassword").val("");
             }else {
                 alert(result.Mess)
             }

@@ -1,6 +1,7 @@
 package controller;
 
 import model.prodotti.Prodotti;
+import model.prodotti.ProdottiDao;
 import model.prodotti.SqlProdottiDao;
 import org.json.JSONObject;
 
@@ -21,7 +22,7 @@ public class SearchServlet extends HttpServlet {
 
         String sQuery = request.getParameter("sValue");
 
-        SqlProdottiDao prodottiDao = new SqlProdottiDao();
+        ProdottiDao prodottiDao = new SqlProdottiDao();
 
         try {
             ArrayList<Prodotti> prodotti = prodottiDao.getProdottoByName(sQuery);

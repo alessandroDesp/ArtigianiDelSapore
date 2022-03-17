@@ -1,6 +1,7 @@
 package model.prodotti;
 
 import model.prodotti.prodottiException.ProdottiNotFoundException;
+import model.utente.Utente;
 import utility.Connect;
 
 import java.sql.*;
@@ -19,6 +20,44 @@ public class SqlProdottiDao implements ProdottiDao{
             }
         }
         return prodotti;
+    }
+
+    public Prodotti insertProdotto(String nome,float prezzo,float sconto,int quantitaAttuale,int quantitaVenduta,String descrizione) throws SQLException {
+        try (Connection con = Connect.getConnection()) {
+            PreparedStatement ps = con.prepareStatement
+                    ("INSERT INTO Prodotti (nome,prezzo,sconto,quantitaAttuale,quantitaVenduta,descrizione) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, nome);
+            ps.setFloat(2, prezzo);
+            ps.setFloat(3, sconto);
+            ps.setInt(4, quantitaAttuale);
+            ps.setInt(5, quantitaVenduta);
+            ps.setString(6, descrizione);
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            int id;
+            if (rs.next()) {
+                id = rs.getInt(1);
+            } else {
+                return null;
+            }
+            return new Prodotti(id,nome,prezzo,quantitaAttuale,quantitaVenduta,sconto,descrizione);
+        }
+    }
+
+    @Override
+    public void modificaProdotto(int idProdotti, String nome, float prezzo, float sconto, int quantitaAttuale, int quantitaVenduta, String descrizione) throws SQLException {
+        try (Connection con = Connect.getConnection()) {
+            PreparedStatement ps = con.prepareStatement
+                    ("UPDATE Prodotti Set nome=?,prezzo=?,sconto=?,quantitaAttuale=?,quantitaVenduta=?,descrizione=? WHERE idProdotti=?", Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, nome);
+            ps.setFloat(2, prezzo);
+            ps.setFloat(3, sconto);
+            ps.setInt(4, quantitaAttuale);
+            ps.setInt(5, quantitaVenduta);
+            ps.setString(6, descrizione);
+            ps.setInt(7, idProdotti);
+            ps.executeUpdate();
+        }
     }
 
     public Prodotti getProdottoById(int idProdotto) throws SQLException,ProdottiNotFoundException {
@@ -57,7 +96,6 @@ public class SqlProdottiDao implements ProdottiDao{
 
         return prodotti;
     }
-
 
 
     private Prodotti createProdotti(ResultSet rs) throws SQLException {
