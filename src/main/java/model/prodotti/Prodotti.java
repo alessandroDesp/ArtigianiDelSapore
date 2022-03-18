@@ -8,6 +8,7 @@ public class Prodotti {
     private int quantitaVenduta;
     private float sconto;
     private String descrizione;
+    private int quantitaDaAcquistare;
 
     public Prodotti(int idProdotti, String nome, float prezzo, int quantitaAttuale, int quantitaVenduta, float sconto, String descrizione) {
         this.idProdotti = idProdotti;
@@ -74,4 +75,8 @@ public class Prodotti {
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
+
+    public int getQuantitaDaAcquistare() { return quantitaDaAcquistare;}
+
+    public void setQuantitaDaAcquistare(int quantitaDaAcquistare) { this.quantitaDaAcquistare = quantitaDaAcquistare;}
 }

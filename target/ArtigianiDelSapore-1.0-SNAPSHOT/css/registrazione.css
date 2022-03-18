@@ -39,3 +39,7 @@
     padding: 5px;
     column-count: 2;
 }
+
+.invalid-feedback {
+    display: none;
+}

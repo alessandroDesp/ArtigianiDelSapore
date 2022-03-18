@@ -43,12 +43,18 @@
                 </div>
                 <%
                 Float sconto = Float.parseFloat(request.getParameter("sconto"));
+                Float prezzo = Float.parseFloat(request.getParameter("prezzo"));
                 if (sconto>0){%>
                   <h3 id="sconto" class="card__sconto">Sconto del ${param.sconto}%</h3>
                 <%}%>
             </div>
             <div class="card__description">
-                <p>Prezzo :${param.prezzo}</p>
+                <%if (sconto>0){%>
+                     <p><text style="text-decoration: line-through;">Prezzo :${param.prezzo}</text> Prezzo :<%=Math.round((prezzo - (prezzo*sconto/100))*100.0)/100.0%></p>
+
+                <%}else{%>
+                    <p>Prezzo :${param.prezzo}</p>
+                <%}%>
                 <p>Quantita' disponibile:${param.quantita_att}</p>
                 <p><label for="quantitaDaAcquistare${param.id}">Quantita:</label><input type="number" min="1" value="1" onchange="if(!(this.value>1)){this.value = 1}else{this.value = parseInt(this.value);}" id="quantitaDaAcquistare${param.id}"></p>
 <%--                <a type="button" href="DettagliProdotti?id=${param.id}">Dettagli</a>--%>

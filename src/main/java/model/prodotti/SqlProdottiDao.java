@@ -67,7 +67,7 @@ public class SqlProdottiDao implements ProdottiDao{
                     ("SELECT * FROM Prodotti WHERE idProdotti=?",Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,idProdotto);
             ResultSet rs = ps.executeQuery();
-            if(rs!=null){
+            if(rs.next()){
                 p = createProdotti(rs);
             }else{
                 throw new ProdottiNotFoundException();

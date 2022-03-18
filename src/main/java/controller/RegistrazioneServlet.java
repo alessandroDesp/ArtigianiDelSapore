@@ -62,6 +62,10 @@ public class RegistrazioneServlet extends HttpServlet {
             if(pattern.matcher(password).matches()) {
                 ListaDesideri listaDesideri = daoListaDesideri.insert();
                 Utente utente = daoUtente.doInsert(3, listaDesideri.getIdListaDesideri(), codiceFiscale, nome, cognome, indirizzoEmail, dataNascitaConvertita, generatedTokenAuth, password);
+                HttpSession session=request.getSession();
+                session.setAttribute(utility.Utilita.SESSION_USER,utente);
+                obj.put("Ris",1);
+                obj.put("Mess","Login effettuato con successo");
                 obj.put("Ris", 1);
                 obj.put("Mess", "Registrazione effettuata con successo");
                 response.getOutputStream().print(obj.toString());

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.prodotti.Prodotti" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: aless
   Date: 15/03/2022
@@ -8,20 +9,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Carrello</title>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Carrello"/>
+    </jsp:include>
+    <link rel="stylesheet" href="css/prodotti.css">
+    <script src="script/cardProdotti.js"></script>
+    <link rel="stylesheet" href="css/cardCarrello.css">
 </head>
 <body>
-
+<%
+    List<Prodotti> prodotti=(List<Prodotti>) request.getAttribute("listaProdotti");
+%>
+<%@ include file="/WEB-INF/views/partials/header.jsp" %>
+<section class="title-Prodotti">
+    <h1 class="">Carrello</h1>
+</section>
 <section id="product-list">
     <div class="container">
         <ul class="cards">
-            <% for (  : ) {%>
-            <jsp:include page="/WEB-INF/views/partials/cardProdotti.jsp">
-                <jsp:param name="id" value="<%=ct.getIdProdotti()%>"/>
-                <jsp:param name="nome" value="<%=ct.getNome()%>"/>
-                <jsp:param name="prezzo" value="<%=ct.getPrezzo()%>"/>
-                <jsp:param name="quantita_att" value="<%=ct.getQuantitaAttuale()%>"/>
-                <jsp:param name="descrizione" value="<%=ct.getDescrizione()%>"/>
+            <% for (Prodotti pd : prodotti) {%>
+            <jsp:include page="/WEB-INF/views/partials/cardCarrello.jsp">
+                <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
+                <jsp:param name="nome" value="<%=pd.getNome()%>"/>
+                <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
+                <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
+                <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
+                <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
+                <jsp:param name="quantitaDaAcquistare" value="<%=pd.getQuantitaDaAcquistare()%>"/>
             </jsp:include>
             <%}%>
         </ul>
