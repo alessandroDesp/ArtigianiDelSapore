@@ -142,10 +142,6 @@ header{
     --bs-text-opacity: 1;
 }
 
-.text-decoration-none {
-    text-decoration: none !important;
-}
-
 .nav-header {
     display: flex;
     flex-wrap: wrap;
@@ -195,9 +191,6 @@ header{
 
 .link-dark {
     color: #212529;
-}
-.link-dark:hover, .link-dark:focus {
-    color: #1a1e21;
 }
 
 
@@ -272,6 +265,10 @@ body{
 .bi {
     vertical-align: -0.125em;
     fill: currentColor;
+}
+
+.cursor_a{
+    cursor: default;
 }
 
 .text-muted {
