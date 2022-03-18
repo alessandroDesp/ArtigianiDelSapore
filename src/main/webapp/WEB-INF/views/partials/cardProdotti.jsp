@@ -56,7 +56,10 @@
                     <p>Prezzo :${param.prezzo}</p>
                 <%}%>
                 <p>Quantita' disponibile:${param.quantita_att}</p>
-                <p><label for="quantitaDaAcquistare${param.id}">Quantita:</label><input type="number" min="1" value="1" onchange="if(!(this.value>1)){this.value = 1}else{this.value = parseInt(this.value);}" id="quantitaDaAcquistare${param.id}"></p>
+                <div>
+                    <label for="quantitaDaAcquistare${param.id}">Quantita:</label>
+                    <input type="number" min="1" value="1" onchange="if(!(this.value>1)){this.value = 1}else{this.value = parseInt(this.value);}" id="quantitaDaAcquistare${param.id}">
+                </div>
 <%--                <a type="button" href="DettagliProdotti?id=${param.id}">Dettagli</a>--%>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1.5rem">
                     <a href="DettagliProdotti?id=${param.id}">

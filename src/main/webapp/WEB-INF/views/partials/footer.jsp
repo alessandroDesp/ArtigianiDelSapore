@@ -7,7 +7,7 @@
 --%>
 
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center my-4 border-top" style="margin-bottom: 0">
         <div class="col-md-4 d-flex align-items-center">
             <a href="#" class="mb-3 me-2 mb-md-0 lh-1 bi">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="1.5rem">

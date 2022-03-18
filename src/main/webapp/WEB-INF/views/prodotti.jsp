@@ -44,5 +44,6 @@
     </div>
 </section>
 
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>
