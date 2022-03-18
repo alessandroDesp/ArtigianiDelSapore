@@ -1,4 +1,4 @@
-@media screen and (min-width: 576px) {
+/*@media screen and (min-width: 576px) {
     .cards{
         grid-template-columns: repeat(1, 21rem);
     }
@@ -26,7 +26,7 @@
     .cards{
         grid-template-columns: repeat(4, 21rem);
     }
-}
+}*/
 
 :root {
     --surface-color: #fff;

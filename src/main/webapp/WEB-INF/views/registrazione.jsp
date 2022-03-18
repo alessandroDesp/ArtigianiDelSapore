@@ -26,9 +26,6 @@
                     </div>
                     <div>
                         <input id="nomeId" type="text">
-                        <div class="invalid-feedback">
-                            Inserisci un nome valido!
-                        </div>
                     </div>
                 </div>
                 <div class="container-input">
@@ -37,9 +34,6 @@
                     </div>
                     <div>
                         <input id="cognomeId" type="text">
-                        <div class="invalid-feedback">
-                            Inserisci un cognome valido!
-                        </div>
                     </div>
                 </div>
             </div>
@@ -50,9 +44,6 @@
                     </div>
                     <div>
                         <input id="codiceFiscaleId" type="text">
-                        <div class="invalid-feedback">
-                            Inserisci un codice fiscale valido!
-                        </div>
                     </div>
                 </div>
                 <div class="container-input">
@@ -71,9 +62,6 @@
                     </div>
                     <div>
                         <input id="indirizzoEmailId" type="text">
-                        <div class="invalid-feedback">
-                            Inserisci una Email valida!
-                        </div>
                     </div>
                 </div>
                 <div class="container-input">
@@ -82,9 +70,6 @@
                     </div>
                     <div>
                         <input id="passwordId" type="password">
-                        <div class="invalid-feedback">
-                            La password deve contenere almeno una lettera maiuscola,una minuscola, un numero e un carattere speciale e deve essere da 8 a 20 caratteri
-                        </div>
                     </div>
                 </div>
             </div>

@@ -143,8 +143,8 @@
                             <img src="images/img2.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-content">
-                            <li><a href="">Profilo</a></li>
-                            <li><a href="">Logout</a></li>
+                            <li><a href="Anagrafica">Profilo</a></li>
+                            <li><a href="Logout">Logout</a></li>
                         </ul>
                     </div>
                 </li>
