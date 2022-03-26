@@ -30,10 +30,17 @@ public class GestioneProdottiServlet extends HttpServlet {
         {
             ProdottiDao daoProdotti = new SqlProdottiDao();
             CategoriaDao daoCategoria = new SqlCategoriaDao();
+            /*Part filePart = request.getPart("cover");
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();*/
             try {
                 List<Prodotti> listaProdotti = daoProdotti.getAllProdotti();
                 List<Categoria> listaCategorie = daoCategoria.getAll();
                 RequestDispatcher requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneProdotti.jsp");
+                /* String uploadRoot = Utilita.getUploadPath();
+                try(InputStream fileStream = filePart .getInputStream()){
+                File file = new File(uploadRoot + fileName);
+                Files.copy(fileStream, file.toPath());
+                }*/
                 request.setAttribute("listaProdotti",listaProdotti);
                 request.setAttribute("listaCategorie",listaCategorie);
                 request.setAttribute("Tipo",5);

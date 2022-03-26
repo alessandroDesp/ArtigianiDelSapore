@@ -1,0 +1,13 @@
+.title-Prodotti{
+    text-align: center;
+
+}
+
+.card-list{
+    margin: 4rem 5vw;
+    border: black 1px solid;
+    border-radius: calc(var(--curve) * 1px);
+    text-decoration: none;
+    width: 21rem;
+    padding: 0.1rem 2rem 0.6rem;
+}

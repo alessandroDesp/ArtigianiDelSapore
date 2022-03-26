@@ -24,34 +24,36 @@
     List<Categoria> categoria = (List<Categoria>) request.getAttribute("listaCategoria");
     int tipoChiamata = (Integer) request.getAttribute("Tipo");
 %>
-<section class="vh30">
-    <table id="dataTable" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Azione</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%for(Categoria c: categoria){%>
-        <tr>
-            <td><%=c.getNome()%></td>
-            <td>bla</td>
+<section>
+    <div class="vhPage">
+        <table id="dataTable" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Azione</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%for(Categoria c: categoria){%>
+            <tr>
+                <td data-head="Nome"><%=c.getNome()%></td>
+                <td data-head="Azione">bla</td>
 
-        </tr>
-        <%}%>
+            </tr>
+            <%}%>
 
 
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Nome</th>
-            <th>Azione</th>
-        </tr>
-        </tfoot>
-    </table>
-
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Nome</th>
+                <th>Azione</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 </section>
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 
 </body>
 </html>

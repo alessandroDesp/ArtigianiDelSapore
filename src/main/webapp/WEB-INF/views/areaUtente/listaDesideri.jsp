@@ -24,52 +24,53 @@
     List<Prodotti> prodotti = (List<Prodotti>) request.getAttribute("listaProdotti");
     int tipoChiamata = (Integer) request.getAttribute("Tipo");
 %>
-<section class="vh30">
-    <table id="dataTable" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>Sconto</th>
-            <th>Quantità attuale</th>
-            <th>Azione</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%for(Prodotti p: prodotti){%>
-        <tr>
-            <td><%=p.getNome()%></td>
-            <td><%=p.getDescrizione()%></td>
-            <td><%=p.getPrezzo()%></td>
-            <td><%=p.getSconto()%></td>
-            <td><%=p.getQuantitaAttuale()%></td>
-            <td>
-                <a class="far fa-file-alt tooltip" href="DettagliProdotti?id=<%=p.getIdProdotti()%>">
-                    <span class="tooltip-text">Dettagli</span>
-                </a>
-                <a class="fas fa-trash-alt tooltip" onclick="rimuoviProdotto(<%=p.getIdProdotti()%>)">
-                    <span class="tooltip-text">Rimuovi</span>
-                </a>
-            </td>
+<section>
+    <div class="vhPage">
+        <table id="dataTable" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+                <th>Sconto</th>
+                <th>Quantità attuale</th>
+                <th>Azione</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%for(Prodotti p: prodotti){%>
+            <tr>
+                <td data-head="Nome"><%=p.getNome()%></td>
+                <td data-head="Descrizione"><%=p.getDescrizione()%></td>
+                <td data-head="Prezzo"><%=p.getPrezzo()%></td>
+                <td data-head="Sconto"><%=p.getSconto()%></td>
+                <td data-head="Quantita attuale"><%=p.getQuantitaAttuale()%></td>
+                <td data-head="Azione">
+                    <a class="far fa-file-alt tooltip" href="DettagliProdotto?id=<%=p.getIdProdotti()%>">
+                        <span class="tooltip-text">Dettagli</span>
+                    </a>
+                    <a class="fas fa-trash-alt tooltip" onclick="rimuoviProdotto(<%=p.getIdProdotti()%>)">
+                        <span class="tooltip-text">Rimuovi</span>
+                    </a>
+                </td>
 
-        </tr>
-        <%}%>
+            </tr>
+            <%}%>
 
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Nome</th>
-            <th>Descrizione</th>
-            <th>Prezzo</th>
-            <th>Sconto</th>
-            <th>Quantità attuale</th>
-            <th>Azione</th>
-        </tr>
-        </tfoot>
-    </table>
-
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Prezzo</th>
+                <th>Sconto</th>
+                <th>Quantità attuale</th>
+                <th>Azione</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 </section>
-
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>

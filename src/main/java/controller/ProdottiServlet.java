@@ -32,8 +32,6 @@ public class ProdottiServlet extends HttpServlet {
         String nomeCategoria = request.getParameter("categoria");
         CategoriaDao categoriaDao = new SqlCategoriaDao();
         ProdottiCategoriaDao prodottiCategoriaDao = new SqlProdottiCategoriaDao();
-        ProdottiDao prodottiDao = new SqlProdottiDao();
-
         RequestDispatcher requestDispatcher;
         try {
             Categoria categoria = categoriaDao.getCategoriaByNome(nomeCategoria);

@@ -19,7 +19,7 @@
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 30%;
+    width: 35rem;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -28,14 +28,14 @@
 }
 
 /* The Close Button */
-.close,.closeCreazione {
+.cl {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,.closeCreazione:hover, .close:focus {
+.cl:hover,.cl:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
@@ -51,7 +51,6 @@
     padding: 8px 16px;
 }
 .modal-body .form-control{
-    width: 30%;
     padding: 2px 5px;
 }
 
@@ -80,3 +79,15 @@
     cursor: pointer;
     width: 100%;
 }
+
+@media screen and (max-width: 578px) {
+    .column-prodotto{
+        column-count: 1;
+    }
+
+    .modal-content{
+        width: 80%;
+    }
+
+}
+

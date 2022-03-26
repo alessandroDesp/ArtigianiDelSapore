@@ -17,33 +17,35 @@
     <link rel="stylesheet" href="css/prodotti.css">
     <script src="script/cardProdotti.js"></script>
     <link rel="stylesheet" href="css/cardProdotti.css">
+    <link rel="stylesheet" href="css/tooltipStyle.css">
 </head>
 <body>
 <%
     List<Prodotti> prodotti=(List<Prodotti>) request.getAttribute("listaProdotti");
 %>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="title-Prodotti">
-    <h1 class="">Prodotti</h1>
-</section>
+<section>
+    <section class="title-Prodotti">
+        <h1 class="">Prodotti</h1>
+    </section>
 
-<section id="product-list">
-    <div class="container">
-        <ul class="cards">
-            <% for (Prodotti pd : prodotti) {%>
-               <jsp:include page="/WEB-INF/views/partials/cardProdotti.jsp">
-                   <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
-                   <jsp:param name="nome" value="<%=pd.getNome()%>"/>
-                   <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
-                   <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
-                   <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
-                   <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
-               </jsp:include>
-            <%}%>
-        </ul>
-    </div>
+    <section id="product-list" class="vhPage75">
+        <div class="container">
+            <ul class="cards">
+                <% for (Prodotti pd : prodotti) {%>
+                   <jsp:include page="/WEB-INF/views/partials/cardProdotti.jsp">
+                       <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
+                       <jsp:param name="nome" value="<%=pd.getNome()%>"/>
+                       <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
+                       <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
+                       <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
+                       <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
+                   </jsp:include>
+                <%}%>
+            </ul>
+        </div>
+    </section>
 </section>
-
 <%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>

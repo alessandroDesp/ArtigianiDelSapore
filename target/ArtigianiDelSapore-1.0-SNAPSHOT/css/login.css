@@ -1,6 +1,5 @@
-.vh100{
-    height: 30vh;
-    margin-top: 10%;
+.login-section{
+    margin-top: 5rem;
 }
 
 .form-login{
@@ -9,7 +8,8 @@
     border: 3px solid #f1f1f1;
 }
 .div-container{
-    margin-left: 35%;
+    display: grid;
+    justify-content: center;
 }
 .button-accedi{
 padding: 10px;
@@ -37,4 +37,11 @@ padding: 10px;
 }
 .button-accedi button:hover {
     opacity: 0.8;
+}
+
+@media screen and (max-width: 430px) {
+    .form-login{
+        width: 100%;
+    }
+
 }

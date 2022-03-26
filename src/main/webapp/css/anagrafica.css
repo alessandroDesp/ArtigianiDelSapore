@@ -1,14 +1,14 @@
 .vh30{
-    height: 30vh;
     margin-top: 2%;
 }
 
 .form{
-    width: 80%;
+    width: 100%;
 }
 
 .div-container{
-    margin-left: 15%;
+    display: grid;
+    justify-content: center;
 }
 
 .button-modifica{
@@ -42,4 +42,10 @@
 
 .modifica-password{
     margin-top: 50px;
+}
+
+@media screen and (max-width: 580px) {
+    .column{
+        column-count: 1;
+    }
 }

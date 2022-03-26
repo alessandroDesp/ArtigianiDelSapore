@@ -18,4 +18,13 @@ $(document).ready(function(){
         modal.style.display = "none";
     });
 
+    var modalAggiungiQuantita = document.getElementById("myModalAggiungiQuantita");
+
+    $('.myBtnQuantitaProdotto').on('click', function () {
+        modalAggiungiQuantita.style.display = "block";
+    });
+    $('.closeQuantitaProdotto').on('click', function () {
+        modalAggiungiQuantita.style.display = "none";
+    });
+
 });

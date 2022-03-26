@@ -18,9 +18,28 @@
     z-index: 1;
     top : -30px;
     right: 0;
+    font-size: 0.7rem;
 }
 
-.tooltip:hover .tooltip-text {
+.tooltip .tooltip-text-prodotti {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    opacity: 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top : -30px;
+    right: -110px;
+    font-size: 0.7em;
+}
+
+.tooltip:hover .tooltip-text,.tooltip:hover .tooltip-text-prodotti {
     visibility: visible;
     opacity: 1;
     transition: opacity 1s ease-out;

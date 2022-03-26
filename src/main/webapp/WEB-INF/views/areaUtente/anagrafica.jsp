@@ -23,8 +23,8 @@
     int tipoChiamata = (Integer) request.getAttribute("Tipo");
 %>
 
-<section class="vh30">
-    <div class="div-container">
+<section>
+    <div class="div-container vhPage">
         <h1>Anagrafica</h1>
         <div class="form">
             <div class="column">
@@ -122,6 +122,7 @@
     </div>
 
 </section>
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 
 </body>
 </html>

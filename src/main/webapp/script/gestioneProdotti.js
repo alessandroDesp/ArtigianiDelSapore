@@ -9,6 +9,12 @@ function iconModificaProdotti(id,nome,prezzo,sconto,quantitaAttuale,quantitaVend
     $("#categorieAggiunte").val( $("#categorieAggiunte").val() + "[" + categorieDaAggiungere + "]");
 }
 
+function iconAggiungiQuantitaProdotto(id,nome,quantitaAttuale){
+    $("#idProdottoQuantita").val(id);
+    $("#nomeIdQuantita").val(nome);
+    $("#quantitaAttualeIdQuantita").val(quantitaAttuale);
+}
+
 function addCategoria(){
     var categorieAggiunte = $("#categorieAggiunte").val();
     var categorieDaAggiungere = $("#categoriaId option:selected").text();

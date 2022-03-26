@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/gestioneOrdini.css">
     <link rel="stylesheet" href="css/dataTable.css">
     <link rel="stylesheet" href="css/tooltipStyle.css">
+    <script src="script/gestioneOrdini.js"></script>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
@@ -25,64 +26,84 @@
     List<Ordini> ordini = (List<Ordini>) request.getAttribute("listaOrdini");
     int tipoChiamata = (Integer) request.getAttribute("Tipo");
 %>
-<section class="vh30">
-    <table id="dataTable" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th>Data</th>
-            <th>Prezzo totale</th>
-            <th>Stato</th>
-            <th>Azione</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%if(ordini.isEmpty()){%>
-        <tr>
-            <td>Nessun valore</td>
-            <td>""</td>
-            <td>""</td>
-            <td>""</td>
-
-        </tr>
-        <%}else{%>
-            <%for(Ordini o :ordini){%>
+<section>
+    <div class="vhPage">
+        <table id="dataTable" class="display" style="width:100%">
+            <thead>
             <tr>
-                <td><%=o.getData()%></td>
-                <td><%=o.getPrezzoTotale()%></td>
-                <td><%=Utilita.getStatoString(o.getKsStatoOrdini())%></td>
-                <td><% switch(o.getKsStatoOrdini()){
-                        case 1:%>
-                        <a class="fas fa-wallet tooltip" href="Pagamento?id=<%=o.getIdOrdini()%>">
-                            <span class="tooltip-text">Paga</span>
-                        <%break;
-                        case 2:%>
-                        <i class="far fa-circle confermata tooltip">
-                            <span class="tooltip-text">Confermata</span>
-                        <%break;
-                         case 3:%>
-                        <i class="far fa-circle consegnata tooltip">
-                            <span class="tooltip-text">Consegnata</span>
-                        <%break;
-                } %>
-
-
-                </td>
+                <th>Data</th>
+                <th>Prezzo totale</th>
+                <th>Stato</th>
+                <th>Azione</th>
             </tr>
-           <%}
-           }%>
+            </thead>
+            <tbody>
+            <%if(ordini.isEmpty()){%>
+            <tr>
+                <td data-head="Data">Nessun valore</td>
+                <td data-head="Prezzo totale">""</td>
+                <td data-head="Stato">""</td>
+                <td data-head="Azione">""</td>
 
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Data</th>
-            <th>Prezzo totale</th>
-            <th>Stato</th>
-            <th>Azione</th>
-        </tr>
-        </tfoot>
-    </table>
+            </tr>
+            <%}else{%>
+                <%for(Ordini o :ordini){%>
+                <tr>
+                    <td data-head="Data"><%=o.getData()%></td>
+                    <td data-head="Prezzo totale"><%=o.getPrezzoTotale()%></td>
+                    <td data-head="Stato"><%=Utilita.getStatoString(o.getKsStatoOrdini())%></td>
+                    <td data-head="Azione">
+                        <%if(u.getKsRuolo()==3){
+                            switch(o.getKsStatoOrdini()){
+                            case 1:%>
+                            <a class="fas fa-wallet tooltip" href="Pagamento?id=<%=o.getIdOrdini()%>">
+                                <span class="tooltip-text">Paga</span>
+                            <%break;
+                            case 2:%>
+                            <i class="fa-solid fa-circle confermata tooltip">
+                                <span class="tooltip-text">Confermato</span>
+                            <%break;
+                             case 3:%>
+                            <i class="fa-solid fa-circle consegnata tooltip">
+                                <span class="tooltip-text">Consegnato</span>
+                            <%break;
+                            }
+                        } else{
+                         switch(o.getKsStatoOrdini()){
+                            case 1:%>
+                            <i class="fa-solid fa-circle daPagare tooltip">
+                                <span class="tooltip-text">Da pagare</span>
+                            <%break;
+                            case 2:%>
+                                <a class="fa-solid fa-circle-check tooltip" onclick="consegnaOrdine(<%=o.getIdOrdini()%>)">
+                                <span class="tooltip-text">Consegna</span>
+                            <%break;
+                             case 3:%>
+                            <i class="fa-solid fa-circle consegnata tooltip">
+                                <span class="tooltip-text">Consegnato</span>
+                            <%break;
+                            }
+                        }%>
 
+
+                    </td>
+                </tr>
+               <%}
+               }%>
+
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Data</th>
+                <th>Prezzo totale</th>
+                <th>Stato</th>
+                <th>Azione</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 </section>
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 
 </body>
 </html>

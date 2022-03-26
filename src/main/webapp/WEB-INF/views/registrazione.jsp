@@ -16,7 +16,7 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="vh100">
+<section class="vhPage registrazione-section">
     <div class="div-container">
         <div class="form-registrazione">
             <div class="column-registrazione">
@@ -81,5 +81,6 @@
         </div>
     </div>
 </section>
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>

@@ -1,8 +1,10 @@
 package utility;
 
+import model.prodotti.Prodotti;
 import model.ruolo.Ruolo;
 import model.statoOrdini.StatoOrdini;
 
+import java.io.File;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -91,6 +93,23 @@ public class Utilita
                 return r.getStato();
         }
         return "problem";
+    }
+
+    public static String getUploadPath(){
+        return System.getenv("CATALINA_HOME") + File.separator + "uploads" + File.separator;
+    }
+
+    public static float getPrezzoTotale(List<Prodotti> prodottiList){
+        float prezzoTotale = 0;
+        for (Prodotti p : prodottiList){
+            if(p.getSconto()>0){
+                prezzoTotale += ((p.getPrezzo() - (p.getPrezzo() * (p.getSconto()/100))) * p.getQuantitaDaAcquistare());
+            }else{
+                prezzoTotale += (p.getPrezzo() * p.getQuantitaDaAcquistare());
+            }
+
+        }
+        return prezzoTotale;
     }
 
 }

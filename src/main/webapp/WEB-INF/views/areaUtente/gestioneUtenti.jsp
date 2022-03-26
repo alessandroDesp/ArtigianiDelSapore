@@ -26,60 +26,61 @@
     List<Utente> utente = (List<Utente>) request.getAttribute("listaUtente");
     int tipoChiamata = (Integer) request.getAttribute("Tipo");
 %>
-<section class="vh30">
-    <table id="dataTable" class="display" style="width:100%">
-        <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Codice fiscale</th>
-            <th>Data di nascita</th>
-            <th>Email</th>
-            <th>Ruolo</th>
-            <th>Azione</th>
-        </tr>
-        </thead>
-        <tbody>
-        <%for(Utente ut:utente){%>
-        <tr>
-            <td><%=ut.getNome()%></td>
-            <td><%=ut.getCognome()%></td>
-            <td><%=ut.getCf()%></td>
-            <td><%=Utilita.convertDateToView(ut.getDataNascita())%></td>
-            <td><%=ut.getEmail()%></td>
-            <td><%=Utilita.getRuoloString(ut.getKsRuolo())%></td>
-            <td>
-                <a class="fas fa-edit tooltip myBtn" onclick="iconModificaPermessi(<%=ut.getIdUtente()%>,<%=ut.getKsRuolo()%>)">
-                  <span class="tooltip-text">Modifica permessi</span>
-                </a>
-            </td>
+<section>
+    <div class="vhPage">
+        <table id="dataTable" class="display" style="width:100%">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Codice fiscale</th>
+                <th>Data di nascita</th>
+                <th>Email</th>
+                <th>Ruolo</th>
+                <th>Azione</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%for(Utente ut:utente){%>
+            <tr>
+                <td data-head="Nome"><%=ut.getNome()%></td>
+                <td data-head="Cognome"><%=ut.getCognome()%></td>
+                <td data-head="Codice fiscale"><%=ut.getCf()%></td>
+                <td data-head="Data di nascita"><%=Utilita.convertDateToView(ut.getDataNascita())%></td>
+                <td data-head="Email"><%=ut.getEmail()%></td>
+                <td data-head="Ruolo"><%=Utilita.getRuoloString(ut.getKsRuolo())%></td>
+                <td data-head="Azione">
+                    <a class="fas fa-edit tooltip myBtn" onclick="iconModificaPermessi(<%=ut.getIdUtente()%>,<%=ut.getKsRuolo()%>)">
+                      <span class="tooltip-text">Modifica permessi</span>
+                    </a>
+                </td>
 
-        </tr>
-        <%}%>
+            </tr>
+            <%}%>
 
-        </tbody>
-        <tfoot>
-        <tr>
-            <th>Nome</th>
-            <th>Cognome</th>
-            <th>Codice fiscale</th>
-            <th>Data di nascita</th>
-            <th>Email</th>
-            <th>Ruolo</th>
-            <th>Azione</th>
-        </tr>
-        </tfoot>
-    </table>
-
+            </tbody>
+            <tfoot>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Codice fiscale</th>
+                <th>Data di nascita</th>
+                <th>Email</th>
+                <th>Ruolo</th>
+                <th>Azione</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
 </section>
-
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
     <div class="modal-content">
         <div class="modal-header">
-            <span class="close">&times;</span>
+            <span class="close cl">&times;</span>
             <h2>Modifica permessi</h2>
         </div>
         <div class="modal-body">

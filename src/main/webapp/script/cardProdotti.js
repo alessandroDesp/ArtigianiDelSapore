@@ -13,7 +13,8 @@ $(document).ready(function() {
 
 function aggiungiCarrello(idProdotto){
     var parola = "#quantitaDaAcquistare" + idProdotto;
-    var quantita = $(parola).val()
+    var quantita = $(parola).val();
+    let quantitaCarrello;
     var data ={
         idProdotto : idProdotto,
         quantitaDaAcquistare : quantita
@@ -25,6 +26,8 @@ function aggiungiCarrello(idProdotto){
         data: data,
         success: function (result) {
             if(result.Ris == 1) {
+                quantitaCarrello = 1 * $("#iconCarrello").attr("value") + 1;
+                $("#iconCarrello").attr("value",quantitaCarrello);
                 alert(result.Mess)
             }else {
                 alert(result.Mess)
