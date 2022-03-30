@@ -8,9 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="../partials/head.jsp">
+        <jsp:param name="title" value="Successo"/>
+    </jsp:include>
 </head>
 <body>
-successo
+<%@ include file="/WEB-INF/views/partials/header.jsp" %>
+    <section class="vhPage">
+        <div class="notification-page">
+            <div class="notification-page-title">
+                Ordine effettuato con successo!
+            </div>
+            <div class="notification-page-body">
+                Controlla tramite la tua area riservata in gestione ordini per vedere lo stato dell'ordine
+            </div>
+        </div>
+    </section>
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>

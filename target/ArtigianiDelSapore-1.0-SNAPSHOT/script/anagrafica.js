@@ -22,10 +22,17 @@ function modificaAnagrafica(){
             type: "post",
             data: data,
             success: function (result) {
-                if (result.Ris == 1) {
-                    alert(result.Mess)
-                } else {
-                    alert(result.Mess)
+                if(result.Ris == 1) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: result.Mess,
+                    })
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Errore',
+                        text: result.Mess,
+                    })
                 }
             }
         });
@@ -56,13 +63,20 @@ function modificaPassword(){
             type: "post",
             data: data,
             success: function (result) {
-                if (result.Ris == 1) {
-                    alert(result.Mess);
+                if(result.Ris == 1) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: result.Mess,
+                    })
                     $("#vecchiaPasswordId").val("");
                     $("#nuovaPasswordId").val("");
                     $("#ripetiPasswordId").val("");
-                } else {
-                    alert(result.Mess)
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Errore',
+                        text: result.Mess,
+                    })
                 }
             }
         });
@@ -79,30 +93,54 @@ function checkRegexAnagrafiaca() {
     var indirizzoEmail = $('#indirizzoEmailId').val();
 
     if (!regexNome.test(nome)) {
-        alert("Inserisci un nome valido!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un nome valido!',
+        })
         return false;
     }
     if (!regexNome.test(cognome)) {
-        alert("Inserisci un cognome valido!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un cognome valido!',
+        })
         return false;
     }
     if (!regexCF.test(codiceFiscale)) {
-        alert("Inserisci un codice fiscale valido!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un codice fiscale valido!',
+        })
         return false;
     }
     if (!regexEmail.test(indirizzoEmail)) {
-        alert("Inserisci un email valida!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un email valida!',
+        })
         return false;
     }
     if ($('#dataNascitaId').val() != ''){
         var dataNascita = new Date($('#dataNascitaId').val());
         var dataAttuale = new Date();
         if (dataNascita > dataAttuale) {
-            alert("La data di nascita non è consentita");
+            Swal.fire({
+                icon: 'error',
+                title: 'Errore',
+                text: 'La data di nascita non è consentita',
+            })
             return false;
         }
     }else{
-        alert("Inserisci una data");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci una data',
+        })
         return false;
     }
     return true;
@@ -115,12 +153,20 @@ function checkRegexPassword() {
     var ripetiPassword = $('#ripetiPasswordId').val();
 
     if ((!regexPassword.test(vecchiaPassword))||(!regexPassword.test(nuovaPassword))) {
-        alert("La password deve contenere almeno una lettera maiuscola,una minuscola, un numero e un carattere speciale e deve essere da 8 a 20 caratteri");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'La password deve contenere almeno una lettera maiuscola,una minuscola, un numero e un carattere speciale e deve essere da 8 a 20 caratteri',
+        })
         return false;
     }
 
     if (!(nuovaPassword == ripetiPassword)) {
-        alert("Le password non corrispondono");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Le password non corrispondono',
+        })
         return false;
     }
 

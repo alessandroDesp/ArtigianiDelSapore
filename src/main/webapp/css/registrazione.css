@@ -3,8 +3,10 @@
 }
 
 .form-registrazione{
-    width: 50%;
     border: 3px solid #f1f1f1;
+    padding: 15px;
+    border-radius: calc(var(--curve) * 1px);
+    background-color: var(--navBarTop_color);
 }
 
 .div-container{
@@ -42,4 +44,11 @@
 
 .invalid-feedback {
     display: none;
+}
+
+@media screen and (max-width: 505px) {
+    .column-registrazione{
+        column-count: unset;
+    }
+
 }

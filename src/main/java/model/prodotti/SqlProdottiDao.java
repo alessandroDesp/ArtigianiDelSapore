@@ -76,27 +76,72 @@ public class SqlProdottiDao implements ProdottiDao{
         return p;
     }
 
-    public ArrayList<Prodotti> getProdottoByName(String nProdotto) throws SQLException {
-
+    @Override
+    public List<Prodotti> getProdottoByName(String nProdotto, int numeroPagina) throws SQLException {
         ArrayList<Prodotti> prodotti = new ArrayList<>();
-
-
-
         try (Connection con = Connect.getConnection()){
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Prodotti WHERE nome LIKE ?",Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Prodotti WHERE nome LIKE ? ORDER BY idProdotti ASC LIMIT 12 OFFSET ?",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, "%" + nProdotto + "%");
-
+            ps.setInt(2,numeroPagina * 12);
             ResultSet rs = ps.executeQuery();
-
             while ( rs.next() ){
                 prodotti.add(createProdotti(rs));
             }
-
         }
-
         return prodotti;
     }
 
+    @Override
+    public int getNumeroProdottiByName(String nProdotto) throws SQLException {
+        try (Connection con = Connect.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM Prodotti WHERE nome LIKE ?");
+            ps.setString(1, "%" + nProdotto + "%");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                return rs.getInt(1);
+            }else {
+                return 0;
+            }
+        }
+    }
+
+    @Override
+    public void aggiungiQuantita(int idProdotto, int quantitaDaAggiungere) throws SQLException, ProdottiNotFoundException{
+        try(Connection con =Connect.getConnection()){
+            PreparedStatement pst = con.prepareStatement("SELECT quantitaAttuale FROM Prodotti WHERE idProdotti=?",Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1,idProdotto);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                int quantitaFinale = rs.getInt(1) + quantitaDaAggiungere;
+                PreparedStatement ps = con.prepareStatement("UPDATE Prodotti SET quantitaAttuale=? WHERE idProdotti=?",Statement.RETURN_GENERATED_KEYS);
+                ps.setInt(1,quantitaFinale);
+                ps.setInt(2,idProdotto);
+                ps.executeUpdate();
+            }else{
+                throw new ProdottiNotFoundException();
+            }
+        }
+    }
+
+    @Override
+    public void aggiungiSottraiQuantita(int idProdotto, int quantitaAcquistata) throws SQLException, ProdottiNotFoundException{
+        try(Connection con =Connect.getConnection()){
+            PreparedStatement pst = con.prepareStatement("SELECT quantitaAttuale,quantitaVenduta FROM Prodotti WHERE idProdotti=?",Statement.RETURN_GENERATED_KEYS);
+            pst.setInt(1,idProdotto);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()){
+                int quantitaFinaleAttuale = rs.getInt(1) - quantitaAcquistata;
+                int quantitaFinaleVenduta = rs.getInt(2) + quantitaAcquistata;
+                PreparedStatement ps = con.prepareStatement("UPDATE Prodotti SET quantitaAttuale=?, quantitaVenduta=? WHERE idProdotti=?",Statement.RETURN_GENERATED_KEYS);
+                ps.setInt(1,quantitaFinaleAttuale);
+                ps.setInt(2,quantitaFinaleVenduta);
+                ps.setInt(3,idProdotto);
+                ps.executeUpdate();
+            }else{
+                throw new ProdottiNotFoundException();
+            }
+        }
+    }
 
     private Prodotti createProdotti(ResultSet rs) throws SQLException {
         int id = rs.getInt("idProdotti");

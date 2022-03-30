@@ -4,6 +4,7 @@ import model.prodotti.Prodotti;
 import model.ruolo.Ruolo;
 import model.statoOrdini.StatoOrdini;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -110,6 +111,11 @@ public class Utilita
 
         }
         return prezzoTotale;
+    }
+
+    public static boolean contieneParametro(HttpServletRequest request, String nome)
+    {
+        return request.getParameter(nome)!=null && request.getParameter(nome)!="";
     }
 
 }

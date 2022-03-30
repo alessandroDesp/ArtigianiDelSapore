@@ -14,12 +14,19 @@ function accedi() {
             type: "post",
             data: data,
             success: function (result) {
-                if (result.Ris == 1) {
-                    if (!alert(result.Mess)) {
-                        window.location.reload();
-                    }
-                } else {
-                    alert(result.Mess)
+                if(result.Ris == 1) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: result.Mess,
+                    }).then(function () {
+                        window.location.href = "./";
+                    })
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Errore',
+                        text: result.Mess,
+                    })
                 }
             }
         });

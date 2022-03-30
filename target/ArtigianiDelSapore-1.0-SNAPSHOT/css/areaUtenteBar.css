@@ -1,13 +1,13 @@
 .areaUtente{
-    background-color: rgb(106 98 227);
+    background-color: var(--navBarTopAreaPrivate_color);
     text-align: center;
-    padding: 15px;
+    padding: 10px;
 }
 .areaUtente-nav{
     width: 100%;
 }
 
-.areaUtente a{
+.displayWindow a{
     padding:16px;
     margin-left: 1%;
     text-decoration: none!important;
@@ -16,4 +16,63 @@
 
 .areaUtente a:hover{
     color: orange;
+}
+
+.icon__areaUtente{
+    background-color: white;
+    padding: 0.4rem;
+    border: 1px solid gray;
+    border-radius: calc(var(--curve) * 1px);
+    font-size: 1.5rem;
+}
+
+.displayMobile{
+    display: grid;
+    justify-content: start;
+}
+
+.displayWindow{
+    padding: 0.6rem;
+}
+
+@media screen and (max-width: 890px) {
+    .displayWindow__ruolo1{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    .displayWindow__ruolo2{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 420px) {
+    .displayWindow__ruolo3{
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 891px) {
+    .displayMobile__ruolo1{
+        display: none!important;
+    }
+
+}
+
+@media screen and (min-width: 751px) {
+    .displayMobile__ruolo2{
+        display: none!important;
+    }
+
+}
+
+@media screen and (min-width: 421px) {
+    .displayMobile__ruolo3{
+        display: none!important;;
+    }
+
 }

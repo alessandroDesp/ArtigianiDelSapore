@@ -8,9 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <jsp:include page="../partials/head.jsp">
+        <jsp:param name="title" value="Errore"/>
+    </jsp:include>
 </head>
 <body>
-errore
+<%@ include file="/WEB-INF/views/partials/header.jsp" %>
+<section class="vhPage">
+    <div class="notification-page">
+        <div class="notification-page-title">
+            Ops si è verificato un errore!
+        </div>
+        <div class="notification-page-body">
+            Se l'errore sussiste contattare l'assistenza
+        </div>
+    </div>
+</section>
+<%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>
 </html>

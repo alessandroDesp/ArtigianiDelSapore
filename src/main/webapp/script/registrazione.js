@@ -21,12 +21,19 @@ function registrati(){
             type: "post",
             data: data,
             success: function (result) {
-                if (result.Ris == 1) {
-                    if (!alert(result.Mess)) {
-                        window.location.reload();
-                    }
-                } else {
-                    alert(result.Mess)
+                if(result.Ris == 1) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: result.Mess,
+                    }).then(function () {
+                        window.location.href = "./";
+                    })
+                }else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Errore',
+                        text: result.Mess,
+                    })
                 }
             }
         });
@@ -45,34 +52,62 @@ function checkRegex() {
     var password = $('#passwordId').val();
 
     if (!regexNome.test(nome)) {
-        alert("Inserisci un nome valido!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un nome valido!',
+        })
         return false;
     }
     if (!regexNome.test(cognome)) {
-        alert("Inserisci un cognome valido!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un cognome valido!',
+        })
         return false;
     }
     if (!regexCF.test(codiceFiscale)) {
-        alert("Inserisci un codice fiscale valido!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un codice fiscale valido!',
+        })
         return false;
     }
     if (!regexEmail.test(indirizzoEmail)) {
-        alert("Inserisci un email valida!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci un email valida!',
+        })
         return false;
     }
     if (!regexPassword.test(password)) {
-        alert("La password deve contenere almeno una lettera maiuscola,una minuscola, un numero e un carattere speciale e deve essere da 8 a 20 caratteri");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'La password deve contenere almeno una lettera maiuscola,una minuscola, un numero e un carattere speciale e deve essere da 8 a 20 caratteri',
+        })
         return false;
     }
     if ($('#dataNascitaId').val() != ''){
         var dataNascita = new Date($('#dataNascitaId').val());
         var dataAttuale = new Date();
         if (dataNascita > dataAttuale) {
-            alert("La data di nascita non è consentita");
+            Swal.fire({
+                icon: 'error',
+                title: 'Errore',
+                text: 'La data di nascita non è consentita',
+            })
             return false;
         }
     }else{
-        alert("Inserisci una data");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci una data',
+        })
         return false;
     }
     return true;

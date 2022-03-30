@@ -26,6 +26,11 @@
 %>
 <section>
     <div class="vhPage">
+        <%if(prodotti.isEmpty()) {%>
+        <div class="empty-datatable">
+            <p class="is-empty">Lista desideri vuota, aggiungi un prodotto alla lista desideri per poterlo visualizzare</p>
+        </div>
+        <%}else{%>
         <table id="dataTable" class="display" style="width:100%">
             <thead>
             <tr>
@@ -47,7 +52,7 @@
                 <td data-head="Quantita attuale"><%=p.getQuantitaAttuale()%></td>
                 <td data-head="Azione">
                     <a class="far fa-file-alt tooltip" href="DettagliProdotto?id=<%=p.getIdProdotti()%>">
-                        <span class="tooltip-text">Dettagli</span>
+                        <span class="tooltip-text tooltip-font-size">Dettagli</span>
                     </a>
                     <a class="fas fa-trash-alt tooltip" onclick="rimuoviProdotto(<%=p.getIdProdotti()%>)">
                         <span class="tooltip-text">Rimuovi</span>
@@ -69,6 +74,7 @@
             </tr>
             </tfoot>
         </table>
+        <%}%>
     </div>
 </section>
 <%@ include file="/WEB-INF/views/partials/footer.jsp" %>

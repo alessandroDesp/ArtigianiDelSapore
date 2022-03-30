@@ -85,10 +85,10 @@
                     <div class="nav-link px-2 link-dark dropdown no-decoration">
                         <a class="nav-link d-block link-dark cursor_a">Cibo</a>
                         <ul class="dropdown-content text-small">
-                            <li><a class="dropdown-item" href="Prodotti?categoria=Pasta">Pasta</a></li>
-                            <li><a class="dropdown-item" href="Prodotti?categoria=Riso">Riso</a></li>
-                            <li><a class="dropdown-item" href="Prodotti?categoria=Pesce">Pesce</a></li>
-                            <li><a class="dropdown-item" href="Prodotti?categoria=Sughi">Pesce</a></li>
+                            <li><a class="dropdown-item" href="Prodotti?categoria=Pasta&numeroPagina=1">Pasta</a></li>
+                            <li><a class="dropdown-item" href="Prodotti?categoria=Riso&numeroPagina=1">Riso</a></li>
+                            <li><a class="dropdown-item" href="Prodotti?categoria=Pesce&numeroPagina=1">Pesce</a></li>
+                            <li><a class="dropdown-item" href="Prodotti?categoria=Sughi&numeroPagina=1">Pesce</a></li>
                         </ul>
                     </div>
 
@@ -98,9 +98,9 @@
                     <div class="nav-link px-2 link-dark dropdown no-decoration">
                         <a href="#" class="nav-link d-block link-dark cursor_a">Bevande</a>
                         <ul class="dropdown-content text-small">
-                            <li><a href="Prodotti?categoria=Vino">Vino</a></li>
-                            <li><a href="Prodotti?categoria=Acqua">Acqua</a></li>
-                            <li><a href="Prodotti?categoria=Succhi">Succhi</a></li>
+                            <li><a href="Prodotti?categoria=Vino&numeroPagina=1">Vino</a></li>
+                            <li><a href="Prodotti?categoria=Acqua&numeroPagina=1">Acqua</a></li>
+                            <li><a href="Prodotti?categoria=Succhi&numeroPagina=1">Succhi</a></li>
                         </ul>
                     </div>
                 </li>
@@ -126,10 +126,10 @@
                         <div class="nav-link px-2 link-dark dropdown no-decoration">
                             <a href="#" class="nav-link d-block link-dark cursor_a">Cibo</a>
                             <ul class="dropdown-content dropdown-subcontent text-small">
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Pasta">Pasta</a></li>
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Riso">Riso</a></li>
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Pesce">Pesce</a></li>
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Sughi">Pesce</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Pasta&numeroPagina=1">Pasta</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Riso&numeroPagina=1">Riso</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Pesce&numeroPagina=1">Pesce</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Sughi&numeroPagina=1">Pesce</a></li>
                             </ul>
                         </div>
                     </li>
@@ -137,9 +137,9 @@
                         <div class="nav-link px-2 link-dark dropdown no-decoration">
                             <a href="#" class="nav-link d-block link-dark cursor_a">Bevande</a>
                             <ul class="dropdown-content dropdown-subcontent text-small">
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Vino">Vino</a></li>
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Acqua">Acqua</a></li>
-                                <li><a class="dropdown-item" href="Prodotti?categoria=Succhi">Succhi</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Vino&numeroPagina=1">Vino</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Acqua&numeroPagina=1">Acqua</a></li>
+                                <li><a class="dropdown-item" href="Prodotti?categoria=Succhi&numeroPagina=1">Succhi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -157,6 +157,7 @@
             </div>
             <a class="fa-solid fa-magnifying-glass icon__search" onclick="showSearch()"></a>
             <form class="col-12 col-lg-auto mb-lg-0 me-lg-3" action="Search" method="post">
+                <input type="hidden" name="numeroPagina" value="1">
                 <input type="search"  id="searchForm" class="form-control" placeholder="Cerca sul sito..." aria-label="Search" name="sValue">
             </form>
 

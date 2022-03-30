@@ -3,6 +3,7 @@ package controller;
 import model.categoria.Categoria;
 import model.categoria.CategoriaDao;
 import model.categoria.SqlCategoriaDao;
+import model.categoria.categoriaException.CategoriaNotFoundException;
 import model.prodotti.Prodotti;
 import model.prodotti.ProdottiDao;
 import model.prodotti.SqlProdottiDao;
@@ -30,16 +31,29 @@ public class ProdottiServlet extends HttpServlet {
             session.setAttribute(utility.Utilita.SESSION_USER,us.get());
         }
         String nomeCategoria = request.getParameter("categoria");
+        int  numeroPagina = Integer.parseInt(request.getParameter("numeroPagina"));
+        int numeroPaginaCalcolato = numeroPagina - 1;
         CategoriaDao categoriaDao = new SqlCategoriaDao();
         ProdottiCategoriaDao prodottiCategoriaDao = new SqlProdottiCategoriaDao();
         RequestDispatcher requestDispatcher;
         try {
             Categoria categoria = categoriaDao.getCategoriaByNome(nomeCategoria);
-            List<Prodotti> prodotti = prodottiCategoriaDao.getProdottiByCategoriaId(categoria.getId());
-            requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/prodotti.jsp");
-            request.setAttribute("listaProdotti",prodotti);
+            if(categoria!=null) {
+                int numeroProdottiTotali = prodottiCategoriaDao.getNumeroProdottiByCategoriaId(categoria.getId());
+                List<Prodotti> prodotti = prodottiCategoriaDao.getProdottiByCategoriaId(categoria.getId(),numeroPaginaCalcolato);
+                requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/prodotti.jsp");
+                request.setAttribute("listaProdotti", prodotti);
+                request.setAttribute("numeroPagina", numeroPagina);
+                request.setAttribute("numeroProdottiTotali", numeroProdottiTotali);
+                request.setAttribute("nomeCategoria",nomeCategoria);
+            }else{
+                throw new CategoriaNotFoundException();
+            }
         } catch (SQLException throwables) {
-            requestDispatcher=request.getRequestDispatcher("/index.jsp");
+            requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/index.jsp");
+        } catch (CategoriaNotFoundException e) {
+            e.printStackTrace();
+            requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/index.jsp");
         }
         requestDispatcher.forward(request,response);
     }

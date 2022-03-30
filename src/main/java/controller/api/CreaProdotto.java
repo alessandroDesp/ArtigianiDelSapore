@@ -10,6 +10,7 @@ import model.prodottiCategoria.SqlProdottiCategoriaDao;
 import model.utente.Utente;
 import org.json.JSONObject;
 import utility.UtenteService;
+import utility.Utilita;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -24,31 +25,38 @@ public class CreaProdotto extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nome = request.getParameter("nome");
-        Float prezzo = Float.parseFloat(request.getParameter("prezzo"));
-        Float sconto = Float.parseFloat(request.getParameter("sconto"));
-        int quantitaAttuale = Integer.parseInt(request.getParameter("quantitaAttuale"));
-        String descrizione = request.getParameter("descrizione");
-        String categoriaStringa = request.getParameter("categorieAggiunteId");
-        ArrayList<Integer> listIdCategoria = new ArrayList<>();
-        String[] splittedCategoria = categoriaStringa.split("-");
-        for(int i=0;i<splittedCategoria.length;i++){
-            listIdCategoria.add(Integer.parseInt(splittedCategoria[i]));
-        }
-        ProdottiDao dao = new SqlProdottiDao();
-        ProdottiCategoriaDao daoCategoriaProdotti = new SqlProdottiCategoriaDao();
-        Optional<Utente> us= UtenteService.getUtente(request);
-        if(us.get().getKsRuolo()==1 || us.get().getKsRuolo()==2)  {
-            try {
-                Prodotti p = dao.insertProdotto(nome, prezzo, sconto, quantitaAttuale, 0, descrizione);
-                for (Integer c : listIdCategoria) {
-                    daoCategoriaProdotti.addProdottiCategoria(c.intValue(), p.getIdProdotti());
+        if(Utilita.contieneParametro(request,"nome") && Utilita.contieneParametro(request,"prezzo") &&
+        Utilita.contieneParametro(request,"sconto") && Utilita.contieneParametro(request,"quantitaAttuale")) {
+            String nome = request.getParameter("nome");
+            Float prezzo = Float.parseFloat(request.getParameter("prezzo"));
+            Float sconto = Float.parseFloat(request.getParameter("sconto"));
+            int quantitaAttuale = Integer.parseInt(request.getParameter("quantitaAttuale"));
+            String descrizione = request.getParameter("descrizione");
+            String categoriaStringa = request.getParameter("categorieAggiunteId");
+            ArrayList<Integer> listIdCategoria = new ArrayList<>();
+            if(categoriaStringa != "") {
+                String[] splittedCategoria = categoriaStringa.split("-");
+                for (int i = 0; i < splittedCategoria.length; i++) {
+                    listIdCategoria.add(Integer.parseInt(splittedCategoria[i]));
                 }
-                response.sendRedirect("GestioneProdotti");
-            } catch (SQLException e) {
-                e.printStackTrace();
-                response.sendRedirect("./");
             }
+            ProdottiDao dao = new SqlProdottiDao();
+            ProdottiCategoriaDao daoCategoriaProdotti = new SqlProdottiCategoriaDao();
+            Optional<Utente> us = UtenteService.getUtente(request);
+            if (us.get().getKsRuolo() == 1 || us.get().getKsRuolo() == 2) {
+                try {
+                    Prodotti p = dao.insertProdotto(nome, prezzo, sconto, quantitaAttuale, 0, descrizione);
+                    for (Integer c : listIdCategoria) {
+                        daoCategoriaProdotti.addProdottiCategoria(c.intValue(), p.getIdProdotti());
+                    }
+                    response.sendRedirect("GestioneProdotti");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    response.sendRedirect("./");
+                }
+            }
+        }else{
+            response.sendRedirect("./");
         }
     }
 }

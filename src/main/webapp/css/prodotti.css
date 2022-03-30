@@ -7,3 +7,17 @@
     text-align: center;
 
 }
+
+.numero-pagina{
+    float: right;
+    display: inline-flex;
+    padding: 0 15px;
+}
+
+.numero-pagina__div{
+    padding: 0 5px;
+}
+
+.pagina-active{
+    background-color: var(--golden_color)!important;
+}

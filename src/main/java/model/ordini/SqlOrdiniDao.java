@@ -41,6 +41,39 @@ public class SqlOrdiniDao implements OrdiniDao{
     }
 
     @Override
+    public Ordini getOrdiniById(int idOrdine) throws SQLException {
+        try (Connection con = Connect.getConnection()) {
+            PreparedStatement ps = con.prepareStatement
+                    ("SELECT * FROM ordini  WHERE idOrdini=?",
+                            Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1,idOrdine);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                return createOrdini(rs);
+            }else{
+                return null;
+            }
+        }
+    }
+
+    @Override
+    public boolean checkUtenteOrdine(int idUtente,int idOrdine) throws SQLException {
+        try (Connection con = Connect.getConnection()) {
+            PreparedStatement ps = con.prepareStatement
+                    ("SELECT * FROM ordini  WHERE idOrdini=? && ksUtente=?",
+                            Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1,idOrdine);
+            ps.setInt(2,idUtente);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+
+    @Override
     public Ordini aggiungiOrdine(int idUtente,int ksStatoOrdini,float prezzoTotale) throws SQLException {
         Date date = new Date();
         long timeInMilliSeconds = date.getTime();

@@ -1,5 +1,5 @@
 .areaUtente{
-    background-color: rgb(106 98 227);
+    background-color: var(--navBarTopAreaPrivate_color);
     text-align: center;
     padding: 10px;
 }

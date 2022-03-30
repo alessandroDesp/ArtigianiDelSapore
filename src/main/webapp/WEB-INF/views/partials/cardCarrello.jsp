@@ -21,7 +21,7 @@
                     Float sconto = Float.parseFloat(request.getParameter("sconto"));
                     Float prezzo = Float.parseFloat(request.getParameter("prezzo"));
                     if (sconto>0){%>
-                <h3 id="sconto" class="card__sconto">Sconto del ${param.sconto}%</h3>
+                <h3 id="sconto" class="card__sconto  sconto__color">Sconto del ${param.sconto}%</h3>
                 <%}%>
             </div>
             <div class="card__description">

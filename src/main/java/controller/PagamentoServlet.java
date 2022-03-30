@@ -6,6 +6,9 @@ import model.ordini.SqlOrdiniDao;
 import model.ordiniProdotti.OrdiniProdottiDao;
 import model.ordiniProdotti.SqlOrdiniProdottiDao;
 import model.prodotti.Prodotti;
+import model.prodotti.ProdottiDao;
+import model.prodotti.SqlProdottiDao;
+import model.prodotti.prodottiException.ProdottiNotFoundException;
 import model.utente.Utente;
 import org.json.JSONObject;
 import utility.Utilita;
@@ -26,6 +29,7 @@ public class PagamentoServlet extends HttpServlet {
         List<Prodotti> prodottiSession = (List<Prodotti>) session.getAttribute(Utilita.SESSION_CARRELLO);
         Utente us=(Utente)session.getAttribute(utility.Utilita.SESSION_USER);
         OrdiniProdottiDao daoOrdiniProdotti = new SqlOrdiniProdottiDao();
+        ProdottiDao daoProdotti = new SqlProdottiDao();
         OrdiniDao daoOrdini = new SqlOrdiniDao();
         RequestDispatcher requestDispatcher;
         if(prodottiSession!=null){
@@ -34,10 +38,14 @@ public class PagamentoServlet extends HttpServlet {
                 Ordini ordine = daoOrdini.aggiungiOrdine(us.getIdUtente(),2,prezzoTotale);
                 for(Prodotti p : prodottiSession){
                     daoOrdiniProdotti.aggiungiOrdiniProdotti(ordine.getIdOrdini(),p.getIdProdotti(),p.getQuantitaDaAcquistare());
+                    daoProdotti.aggiungiSottraiQuantita(p.getIdProdotti(),p.getQuantitaDaAcquistare());
                 }
                 session.setAttribute(Utilita.SESSION_CARRELLO,null);
                 requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/notificationPage/succesPage.jsp");
             } catch (SQLException e) {
+                e.printStackTrace();
+                requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/notificationPage/errorPage.jsp");
+            } catch (ProdottiNotFoundException e) {
                 e.printStackTrace();
                 requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/notificationPage/errorPage.jsp");
             }

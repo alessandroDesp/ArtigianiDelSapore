@@ -9,7 +9,7 @@
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
-        <jsp:param name="title" value="Prodotti"/>
+        <jsp:param name="title" value="DettagliProdotto"/>
     </jsp:include>
     <link rel="stylesheet" href="css/dettagliProdotto.css">
     <link rel="stylesheet" href="css/tooltipStyle.css">

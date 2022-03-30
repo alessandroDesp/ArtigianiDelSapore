@@ -10,4 +10,13 @@
     text-decoration: none;
     width: 21rem;
     padding: 0.1rem 2rem 0.6rem;
+    background-color: var(--navBarTop_color);
+}
+
+.pagamento-button{
+    width: 10rem;
+    height: 30px;
+    background-color: rgb(73,212,38);
+    cursor: pointer;
+    border-radius: calc(var(--curve) * 1px);
 }

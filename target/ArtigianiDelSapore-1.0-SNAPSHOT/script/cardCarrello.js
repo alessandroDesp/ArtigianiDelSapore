@@ -21,9 +21,16 @@ function changeQuantitaDaAcquistare(idProdotto){
         data: data,
         success: function (result) {
             if(result.Ris == 1) {
-                alert(result.Mess)
+                Swal.fire({
+                    icon: 'success',
+                    title: result.Mess,
+                })
             }else {
-                alert(result.Mess)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Errore',
+                    text: result.Mess,
+                })
             }
         }
     });
@@ -33,6 +40,10 @@ function procediAlPagamento(numeroArticoli){
     if(numeroArticoli>0){
         location.href='Pagamento'
     }else{
-        alert("no");
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Nessun prodotto aggiunto al carrello',
+        })
     }
 }

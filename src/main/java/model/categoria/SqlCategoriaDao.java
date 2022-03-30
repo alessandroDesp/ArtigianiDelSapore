@@ -18,12 +18,9 @@ public class SqlCategoriaDao implements CategoriaDao{
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return createCategoria(rs);
-            } else {
-                throw new SQLException();
             }
-
-
         }
+        return null;
     }
     @Override
     public List<Categoria> getAll() throws SQLException {

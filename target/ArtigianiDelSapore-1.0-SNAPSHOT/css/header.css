@@ -27,6 +27,29 @@
         grid-template-columns: repeat(4, 21rem);
     }
 }*/
+:root {
+    --navBarTop_color : #EAF4EB;
+    --button_color : #5DF5A4;
+    --body_color : #E69A9A;
+    --navBarTopAreaPrivate_color : #738CFF;
+    --golden_color : #C7AA5A;
+    --dataTable_color : #dfdfdf;
+
+    --surface-color: #fff;
+    --curve: 40;
+}
+
+header{
+    background-color: var(--navBarTop_color);
+}
+
+/*body{
+    background-color: var(--body_color);
+}*/
+
+.sconto__color{
+    background-color: var(--golden_color);
+}
 
 .vhPage{
     min-height: 85vh;
@@ -34,11 +57,6 @@
 
 .vhPage75{
     min-height: 75vh;
-}
-
-:root {
-    --surface-color: #fff;
-    --curve: 40;
 }
 
 * {
@@ -58,7 +76,7 @@
     cursor: pointer;
 }
 .header{
-    background-color: rgb(240 245 245);
+    background-color: var(--navBarTop_color);
     text-align: center;
     padding: 35px;
 }
@@ -124,11 +142,7 @@ a:hover{
 
 /** Navbar **/
 
-header{
-    background-color: rgb(240 245 245);
-    /*padding-left: 3rem;*/
-    /*padding-right: 3rem;*/
-}
+
 
 .dropdown-item{
 
@@ -281,8 +295,7 @@ body{
 }
 
 .my-4 {
-    margin-top: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
+    margin-top: 2rem !important;
 }
 
 .border-top {
@@ -370,6 +383,34 @@ body{
     margin-top: 2rem;
     left: 0;
     z-index: 1;
+}
+
+.is-empty{
+    font-size: 1.5rem;
+    padding: 2rem;
+    font-weight: bold;
+}
+
+.empty-datatable{
+    display: grid;
+    justify-content: center;
+}
+
+.notification-page{
+    display: grid;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.notification-page-title{
+    font-size: 2rem;
+    padding: 1rem 0.5rem;
+    font-weight: bold;
+}
+
+.notification-page-body{
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
 }
 
 @media screen and (max-width: 751px) {

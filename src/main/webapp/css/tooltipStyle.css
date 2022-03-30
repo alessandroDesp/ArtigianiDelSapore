@@ -39,6 +39,10 @@
     font-size: 0.7em;
 }
 
+.tooltip-font-size{
+    font-size: 1rem!important;
+}
+
 .tooltip:hover .tooltip-text,.tooltip:hover .tooltip-text-prodotti {
     visibility: visible;
     opacity: 1;

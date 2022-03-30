@@ -1,5 +1,5 @@
 footer{
-    background-color: rgb(240 245 245);
+    background-color: var(--navBarTop_color);
     padding: 1rem;
     position: absolute;
     width: 100%;

@@ -14,3 +14,7 @@ section div img{
     column-count: 3;
     text-align: center;
 }
+
+.body-color{
+    background-color: var(--body_color);
+}

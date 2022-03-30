@@ -13,6 +13,7 @@ import model.prodotti.SqlProdottiDao;
 import model.prodotti.prodottiException.ProdottiNotFoundException;
 import model.utente.Utente;
 import org.json.JSONObject;
+import utility.Utilita;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,33 +26,39 @@ public class AggiungiPreferiti extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int prodottiId = Integer.parseInt(request.getParameter("idProdotto"));
-        ListaDesideriDao daoListaDesideri = new SqlListaDesideriDao();
-        ListaDesideriProdottiDao daoListaDesideriProdotti = new SqlListaDesideriProdottiDao();
-        HttpSession session=request.getSession(true);
-        Utente us=(Utente)session.getAttribute(utility.Utilita.SESSION_USER);
         JSONObject obj=new JSONObject();
-        if(us!=null){
-            try {
-                ListaDesideri ld = daoListaDesideri.getByUtenteId(us.getIdUtente());
-                daoListaDesideriProdotti.alreadyExsist(prodottiId,ld.getIdListaDesideri());
-                daoListaDesideriProdotti.insert(prodottiId,ld.getIdListaDesideri());
-                obj.put("Ris", 1);
-                obj.put("Mess", "Prodotto aggiunto ai preferiti con successo");
-                response.getOutputStream().print(obj.toString());
-            } catch (SQLException e) {
-                obj.put("Ris",0);
-                obj.put("Mess","Si e' verificato un errore, riprovare piu' tardi o contattare l'assistenza");
-                response.getOutputStream().print(obj.toString());
-            } catch (ListaDesideriNotFoundException e) {
-                obj.put("Ris",0);
-                obj.put("Mess","Si e' verificato un errore, riprovare piu' tardi o contattare l'assistenza");
-                response.getOutputStream().print(obj.toString());
-            } catch (ListaDesideriProdottiAlreadyExstistException e) {
-                obj.put("Ris", 0);
-                obj.put("Mess", "Il prodotto e' gia' presente nella lista preferiti");
-                response.getOutputStream().print(obj.toString());
+        if(Utilita.contieneParametro(request,"idProdotto")) {
+            int prodottiId = Integer.parseInt(request.getParameter("idProdotto"));
+            ListaDesideriDao daoListaDesideri = new SqlListaDesideriDao();
+            ListaDesideriProdottiDao daoListaDesideriProdotti = new SqlListaDesideriProdottiDao();
+            HttpSession session = request.getSession(true);
+            Utente us = (Utente) session.getAttribute(utility.Utilita.SESSION_USER);
+            if (us != null) {
+                try {
+                    ListaDesideri ld = daoListaDesideri.getByUtenteId(us.getIdUtente());
+                    daoListaDesideriProdotti.alreadyExsist(prodottiId, ld.getIdListaDesideri());
+                    daoListaDesideriProdotti.insert(prodottiId, ld.getIdListaDesideri());
+                    obj.put("Ris", 1);
+                    obj.put("Mess", "Prodotto aggiunto ai preferiti con successo");
+                    response.getOutputStream().print(obj.toString());
+                } catch (SQLException e) {
+                    obj.put("Ris", 0);
+                    obj.put("Mess", "Si e' verificato un errore, riprovare piu' tardi o contattare l'assistenza");
+                    response.getOutputStream().print(obj.toString());
+                } catch (ListaDesideriNotFoundException e) {
+                    obj.put("Ris", 0);
+                    obj.put("Mess", "Si e' verificato un errore, riprovare piu' tardi o contattare l'assistenza");
+                    response.getOutputStream().print(obj.toString());
+                } catch (ListaDesideriProdottiAlreadyExstistException e) {
+                    obj.put("Ris", 0);
+                    obj.put("Mess", "Il prodotto e' gia' presente nella lista preferiti");
+                    response.getOutputStream().print(obj.toString());
+                }
             }
+        }else{
+            obj.put("Ris", 0);
+            obj.put("Mess", "Si e' verificato un errore, riprovare piu' tardi o contattare l'assistenza");
+            response.getOutputStream().print(obj.toString());
         }
     }
 }

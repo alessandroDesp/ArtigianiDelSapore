@@ -45,7 +45,7 @@
                 Float sconto = Float.parseFloat(request.getParameter("sconto"));
                 Float prezzo = Float.parseFloat(request.getParameter("prezzo"));
                 if (sconto>0){%>
-                  <h3 id="sconto" class="card__sconto">Sconto del ${param.sconto}%</h3>
+                  <h3 id="sconto" class="card__sconto sconto__color">Sconto del ${param.sconto}%</h3>
                 <%}%>
             </div>
             <div class="card__description">
@@ -56,20 +56,24 @@
                     <p>Prezzo :${param.prezzo}</p>
                 <%}%>
                 <p>Quantita' disponibile:${param.quantita_att}</p>
+                <%if(ut!=null){%>
                 <div>
                     <label for="quantitaDaAcquistare${param.id}">Quantita:</label>
                     <input type="number" min="1" value="1" onchange="if(!(this.value>1)){this.value = 1}else{this.value = parseInt(this.value);}" id="quantitaDaAcquistare${param.id}">
                 </div>
+                <%}%>
 <%--                <a type="button" href="DettagliProdotti?id=${param.id}">Dettagli</a>--%>
                 <a class="fa-solid fa-circle-info tooltip" href="DettagliProdotto?id=${param.id}">
                     <span class="tooltip-text-prodotti">Dettagli prodotti</span>
                 </a>
+                <%if(ut!=null){%>
                 <a class="fa-solid fa-cart-plus tooltip" onClick="aggiungiCarrello(${param.id})">
                     <span class="tooltip-text-prodotti">Aggiungi al carrello</span>
                 </a>
                 <a class="fa-solid fa-star tooltip" onClick="aggiungiPreferiti(${param.id})">
                     <span class="tooltip-text-prodotti">Aggiungi ai preferiti</span>
                 </a>
+                <%}%>
                 <!--! <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1.5rem">
                     <a class="tooltip" href="DettagliProdotti?id=${param.id}">
                          Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc.

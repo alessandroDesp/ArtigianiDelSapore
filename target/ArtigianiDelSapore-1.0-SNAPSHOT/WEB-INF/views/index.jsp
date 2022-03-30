@@ -11,7 +11,10 @@
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
 
-<section class="vhPage"></section>
+<section></section>
+<div class="body-color vhPage">
+
+</div>
 <%--
 <section class="prodotti">
     <% for (int i=0;i<6;i++) { %>

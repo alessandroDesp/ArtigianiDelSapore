@@ -24,11 +24,18 @@
     int i = 0;
 %>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="cart vhPage">
+<section>
+    <%if(prodotti.isEmpty()) {%>
+    <section class="vhPage">
+        <div class="empty-datatable">
+            <p class="is-empty">Carrello vuoto, aggiungi un prodotto al carrello per poterlo visualizzare in questa sezione</p>
+        </div>
+    </section>
+    <%}else{%>
     <section class="title-Prodotti">
         <h1 class="">Carrello</h1>
     </section>
-    <section id="product-list">
+    <section class="vhPage75" id="product-list">
         <div class="container">
             <ul class="cards">
                 <% for (Prodotti pd : prodotti) {
@@ -57,10 +64,11 @@
             <div class="card-list">
                  <p>Totale provvisorio (<%=i%> Articoli)</p>
                  <span  id="costoTotaleId"><%=(Math.round((costoTotale)*100.0)/100.0)%></span>€
-                 <button onclick="procediAlPagamento(<%=i%>)">Procedi al pagamento</button>
+                 <button class="pagamento-button" onclick="procediAlPagamento(<%=i%>)">Procedi al pagamento</button>
             </div>
         </div>
     </section>
+    <%}%>
 </section>
 <%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>

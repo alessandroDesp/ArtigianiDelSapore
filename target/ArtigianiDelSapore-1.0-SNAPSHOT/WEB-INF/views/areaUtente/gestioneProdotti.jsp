@@ -102,43 +102,43 @@
                     <div class="column-prodotto">
                         <div class="container-input">
                             <div>
-                                <label>Nome</label>
+                                <label for="creazioneNome">Nome</label>
                             </div>
                             <div>
-                                <input name="nome" type="text">
-                            </div>
-                        </div>
-                        <div class="container-input">
-                            <div>
-                                <label>Prezzo</label>
-                            </div>
-                            <div>
-                                <input name="prezzo" type="number" min="0" value="0" step=".01">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column-prodotto">
-                        <div class="container-input">
-                            <div>
-                                <label>Quantità attuale</label>
-                            </div>
-                            <div>
-                                <input name="quantitaAttuale" type="number" min="0" value="0">
+                                <input id="creazioneNome" name="nome" type="text">
                             </div>
                         </div>
                         <div class="container-input">
                             <div>
-                                <label>Sconto</label>
+                                <label for="creazionePrezzo">Prezzo</label>
                             </div>
                             <div>
-                                <input name="sconto" type="number" min="0" value="0" step=".01">
+                                <input id="creazionePrezzo" name="prezzo" type="number" min="0" value="0" step=".01" onchange="if(!(this.value>0)){this.value = 0}">
                             </div>
                         </div>
                     </div>
                     <div class="column-prodotto">
                         <div class="container-input">
                             <div>
-                                <label>Categoria</label>
+                                <label for="creazioneQuantitaAttuale">Quantità attuale</label>
+                            </div>
+                            <div>
+                                <input id="creazioneQuantitaAttuale" name="quantitaAttuale" type="number" min="0" value="0" onchange="if(!(this.value>0)){this.value = 0}else{this.value = parseInt(this.value);}">
+                            </div>
+                        </div>
+                        <div class="container-input">
+                            <div>
+                                <label for="creazioneSconto">Sconto</label>
+                            </div>
+                            <div>
+                                <input id="creazioneSconto" name="sconto" type="number" min="0" value="0" step=".01" onchange="if(!(this.value>0)){this.value = 0}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column-prodotto">
+                        <div class="container-input">
+                            <div>
+                                <label for="categoriaId">Categoria</label>
                             </div>
                             <div>
                                 <select id="categoriaId" name="categoria" onchange="addCategoria()">
@@ -151,7 +151,7 @@
                         </div>
                         <div class="container-input">
                             <div>
-                                <label>Categorie aggiunte</label>
+                                <label for="categorieAggiunte">Categorie aggiunte</label>
                             </div>
                             <div>
                                 <input id="categorieAggiunte" name="categorieAggiunte" type="text" disabled>
@@ -161,13 +161,13 @@
                     </div>
                     <div class="container-input">
                         <div>
-                            <label>Descrizione</label>
+                            <label for="creazioneDescrizione">Descrizione</label>
                         </div>
                         <div>
-                            <textarea name="descrizione"></textarea>
+                            <textarea id="creazioneDescrizione" name="descrizione"></textarea>
                         </div>
                     </div>
-                    <button type="submit" name="sub">Crea</button>
+                    <button type="submit"  onclick="return validateFormCreazione()" name="sub">Crea</button>
                 </form>
             </div>
         </div>
@@ -187,7 +187,7 @@
                     <div class="column-prodotto">
                         <div class="container-input">
                             <div>
-                                <label>Nome</label>
+                                <label for="nomeId">Nome</label>
                             </div>
                             <div>
                                 <input id="nomeId" name="nome" type="text">
@@ -195,51 +195,51 @@
                         </div>
                         <div class="container-input">
                             <div>
-                                <label>Prezzo</label>
+                                <label for="prezzoId">Prezzo</label>
                             </div>
                             <div>
-                                <input id="prezzoId" name="prezzo" type="number" min="0" step=".01">
+                                <input id="prezzoId" name="prezzo" type="number" min="0" step=".01" onchange="if(!(this.value>0)){this.value = 0}">
                             </div>
                         </div>
                     </div>
                     <div class="column-prodotto">
                         <div class="container-input">
                             <div>
-                                <label>Quantità attuale</label>
+                                <label for="quantitaAttualeId">Quantità attuale</label>
                             </div>
                             <div>
-                                <input id="quantitaAttualeId" name="quantitaAttuale" type="number" min="0">
+                                <input id="quantitaAttualeId" name="quantitaAttuale" type="number" min="0" onchange="if(!(this.value>0)){this.value = 0}else{this.value = parseInt(this.value);}">
                             </div>
                         </div>
                         <div class="container-input">
                             <div>
-                                <label>Quantità venduta</label>
+                                <label for="quantitaVendutaId">Quantità venduta</label>
                             </div>
                             <div>
-                                <input id="quantitaVendutaId" name="quantitaVenduta" type="number" min="0" >
+                                <input id="quantitaVendutaId" name="quantitaVenduta" type="number" min="0" onchange="if(!(this.value>0)){this.value = 0}else{this.value = parseInt(this.value);}" >
                             </div>
                         </div>
                     </div>
 
                     <div class="container-input">
                         <div>
-                            <label>Sconto</label>
+                            <label for="scontoId">Sconto</label>
                         </div>
                         <div>
-                            <input id="scontoId" name="sconto" type="number" min="0"  step=".01">
+                            <input id="scontoId" name="sconto" type="number" min="0"  step=".01" onchange="if(!(this.value>0)){this.value = 0}">
                         </div>
                     </div>
 
                     <div class="container-input">
                         <div>
-                            <label>Descrizione</label>
+                            <label for="descrizioneId">Descrizione</label>
                         </div>
                         <div>
                             <textarea id="descrizioneId" name="descrizione"></textarea>
                         </div>
                     </div>
                     <input type="hidden" id="idProdotto" name="prodottoId">
-                    <button type="submit" name="sub">Modifica</button>
+                    <button type="submit"  onclick="return validateFormModifica()" name="sub">Modifica</button>
                 </form>
             </div>
         </div>

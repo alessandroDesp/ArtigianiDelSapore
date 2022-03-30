@@ -16,8 +16,8 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="vhPage registrazione-section">
-    <div class="div-container">
+<section class="registrazione-section">
+    <div class="div-container vhPage">
         <div class="form-registrazione">
             <div class="column-registrazione">
                 <div class="container-input">
