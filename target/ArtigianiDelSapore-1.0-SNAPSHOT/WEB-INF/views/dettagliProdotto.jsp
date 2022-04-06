@@ -9,7 +9,7 @@
 <html>
 <head>
     <jsp:include page="partials/head.jsp">
-        <jsp:param name="title" value="Prodotti"/>
+        <jsp:param name="title" value="DettagliProdotto"/>
     </jsp:include>
     <link rel="stylesheet" href="css/dettagliProdotto.css">
     <link rel="stylesheet" href="css/tooltipStyle.css">
@@ -29,7 +29,7 @@
     <section class="vhPage">
         <div class="card__dettagliProdotto">
             <div class="container__image">
-                 <img src="images/img1.jpg" class="image__prodotto" alt="" />
+                 <img src="covers/<%=prodotto.getFotoPath()%>" class="image__prodotto" alt="" />
             </div>
             <div class="descrizione__dettagliProdotto">
                 <div>
@@ -38,9 +38,13 @@
                 </div>
                 <div>
                     <label for="prezzo">Prezzo</label>
-                    <p id="prezzo"><%=prodotto.getPrezzo()%></p>
+                    <%if (prodotto.getSconto()>0){%>
+                        <p id="prezzo"><%=Math.round((prodotto.getPrezzo() - (prodotto.getPrezzo()*prodotto.getSconto()/100))*100.0)/100.0%></p>
+                    <%}else{%>
+                        <p id="prezzo"><%=prodotto.getPrezzo()%></p>
+                    <%}%>
                 </div>
-                <div>
+                <div class="descr">
                     <label for="descrizione">Descrizione</label>
                     <p id="descrizione"><%=prodotto.getDescrizione()%></p>
                 </div>

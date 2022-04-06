@@ -6,7 +6,6 @@ function iconModificaProdotti(id,nome,prezzo,sconto,quantitaAttuale,quantitaVend
     $("#quantitaAttualeId").val(quantitaAttuale);
     $("#quantitaVendutaId").val(quantitaVenduta);
     $("#descrizioneId").val(descrizione);
-    $("#categorieAggiunte").val( $("#categorieAggiunte").val() + "[" + categorieDaAggiungere + "]");
 }
 
 function iconAggiungiQuantitaProdotto(id,nome,quantitaAttuale){
@@ -28,6 +27,15 @@ function validateFormCreazione(){
     var nome = $('#creazioneNome').val();
     var prezzo = $('#creazionePrezzo').val();
     var descrizione = $('#creazioneDescrizione').val();
+    var inputField = document.getElementById('cover');
+    if(inputField.files.length == 0){
+        Swal.fire({
+            icon: 'error',
+            title: 'Errore',
+            text: 'Inserisci una foto!',
+        })
+        return false;
+    }
     return regex(nome,descrizione,prezzo);
 }
 
@@ -39,8 +47,8 @@ function validateFormModifica(){
 }
 
 function regex(nome,descrizione,prezzo){
-    const regexNome = new RegExp("^[A-Za-z0-9._%+-]{2,30}$");
-    const regexDescr = new RegExp("^[A-Za-z0-9._%+-]{0,255}$");
+    const regexNome = new RegExp("^[A-Za-z0-9,'._%+\\s-]{2,40}$");
+    const regexDescr = new RegExp("^[àèùùA-Za-z0-9(),'._%+!?\\s-]{0,255}$");
     if(!regexNome.test(nome)){
         Swal.fire({
             icon: 'error',
@@ -67,5 +75,6 @@ function regex(nome,descrizione,prezzo){
         })
         return false;
     }
+
     return true;
 }

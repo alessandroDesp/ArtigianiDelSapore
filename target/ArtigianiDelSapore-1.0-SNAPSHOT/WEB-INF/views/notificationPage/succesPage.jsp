@@ -17,7 +17,7 @@
     <section class="vhPage">
         <div class="notification-page">
             <div class="notification-page-title">
-                Ordine effettuato con successo!
+                Pagamento effettuato con successo!
             </div>
             <div class="notification-page-body">
                 Controlla tramite la tua area riservata in gestione ordini per vedere lo stato dell'ordine

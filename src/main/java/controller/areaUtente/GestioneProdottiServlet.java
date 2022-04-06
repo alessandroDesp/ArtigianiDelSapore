@@ -22,33 +22,36 @@ public class GestioneProdottiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Utente> us= UtenteService.getUtente(request);
-        if(!((us.get().getKsRuolo()==1) || (us.get().getKsRuolo()==2)))
+        if(!us.isPresent())
         {
             response.sendRedirect("./");
         }
-        else
-        {
-            ProdottiDao daoProdotti = new SqlProdottiDao();
-            CategoriaDao daoCategoria = new SqlCategoriaDao();
+        else {
+            if (!((us.get().getKsRuolo() == 1) || (us.get().getKsRuolo() == 2))) {
+                response.sendRedirect("./");
+            } else {
+                ProdottiDao daoProdotti = new SqlProdottiDao();
+                CategoriaDao daoCategoria = new SqlCategoriaDao();
             /*Part filePart = request.getPart("cover");
             String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();*/
-            try {
-                List<Prodotti> listaProdotti = daoProdotti.getAllProdotti();
-                List<Categoria> listaCategorie = daoCategoria.getAll();
-                RequestDispatcher requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneProdotti.jsp");
+                try {
+                    List<Prodotti> listaProdotti = daoProdotti.getAllProdotti();
+                    List<Categoria> listaCategorie = daoCategoria.getAll();
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneProdotti.jsp");
                 /* String uploadRoot = Utilita.getUploadPath();
                 try(InputStream fileStream = filePart .getInputStream()){
                 File file = new File(uploadRoot + fileName);
                 Files.copy(fileStream, file.toPath());
                 }*/
-                request.setAttribute("listaProdotti",listaProdotti);
-                request.setAttribute("listaCategorie",listaCategorie);
-                request.setAttribute("Tipo",5);
-                requestDispatcher.forward(request,response);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+                    request.setAttribute("listaProdotti", listaProdotti);
+                    request.setAttribute("listaCategorie", listaCategorie);
+                    request.setAttribute("Tipo", 5);
+                    requestDispatcher.forward(request, response);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
+            }
         }
     }
 

@@ -3,6 +3,8 @@ package controller;
 import model.categoria.Categoria;
 import model.categoria.CategoriaDao;
 import model.categoria.SqlCategoriaDao;
+import model.foto.FotoDao;
+import model.foto.SqlFotoDao;
 import model.prodotti.Prodotti;
 import model.prodotti.ProdottiDao;
 import model.prodotti.SqlProdottiDao;
@@ -32,6 +34,7 @@ public class SearchServlet extends HttpServlet {
         ProdottiDao prodottiDao = new SqlProdottiDao();
         CategoriaDao categoriaDao = new SqlCategoriaDao();
         ProdottiCategoriaDao prodottiCategoriaDao = new SqlProdottiCategoriaDao();
+        FotoDao daoFoto = new SqlFotoDao();
         List<Prodotti> prodotti;
         int numeroProdottiTotali;
         try {
@@ -43,6 +46,9 @@ public class SearchServlet extends HttpServlet {
             }else{
                 numeroProdottiTotali = prodottiDao.getNumeroProdottiByName(sQuery);
                 prodotti = prodottiDao.getProdottoByName(sQuery,numeroPaginaCalcolato);
+            }
+            for(Prodotti p: prodotti){
+                p.setFotoPath(daoFoto.getFotoByProdottoId(p.getIdProdotti()));
             }
             requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/prodottiSearchResult.jsp");
             request.setAttribute("listaProdotti",prodotti);

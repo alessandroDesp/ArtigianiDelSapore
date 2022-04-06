@@ -23,7 +23,7 @@ public class ModificaPermessi extends HttpServlet {
             int ruolo = Integer.parseInt(request.getParameter("ruolo"));
             UtenteDAO dao = new SqlUtenteDao();
             Optional<Utente> us = UtenteService.getUtente(request);
-            if (us.get().getKsRuolo() == 1) {
+            if (us.get().getKsRuolo() == 1 && us.get().getIdUtente()!=idUtente) {
                 try {
                     dao.doChangeRuolo(idUtente, ruolo);
                     response.sendRedirect("GestioneUtenti");
@@ -31,6 +31,8 @@ public class ModificaPermessi extends HttpServlet {
                     e.printStackTrace();
                     response.sendRedirect("./");
                 }
+            }else{
+                response.sendRedirect("./");
             }
         }else{
             response.sendRedirect("./");

@@ -9,6 +9,7 @@ public class Prodotti {
     private float sconto;
     private String descrizione;
     private int quantitaDaAcquistare;
+    private String fotoPath;
 
     public Prodotti(int idProdotti, String nome, float prezzo, int quantitaAttuale, int quantitaVenduta, float sconto, String descrizione) {
         this.idProdotti = idProdotti;
@@ -79,4 +80,12 @@ public class Prodotti {
     public int getQuantitaDaAcquistare() { return quantitaDaAcquistare;}
 
     public void setQuantitaDaAcquistare(int quantitaDaAcquistare) { this.quantitaDaAcquistare = quantitaDaAcquistare;}
+
+    public String getFotoPath() {
+        return fotoPath;
+    }
+
+    public void setFotoPath(String fotoPath) {
+        this.fotoPath = fotoPath;
+    }
 }

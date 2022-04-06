@@ -1,32 +1,6 @@
-/*@media screen and (min-width: 576px) {
-    .cards{
-        grid-template-columns: repeat(1, 21rem);
-    }
+*{
+    font-family: "Times New Roman", Times, serif;
 }
-
-@media screen and (min-width: 768px) {
-    .cards{
-        grid-template-columns: repeat(2, 21rem);
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .cards{
-        grid-template-columns: repeat(3, 21rem);
-    }
-}
-
-@media (min-width: 1200px) {
-    .cards{
-        grid-template-columns: repeat(4, 21rem);
-    }
-}
-
-@media (min-width: 1400px) {
-    .cards{
-        grid-template-columns: repeat(4, 21rem);
-    }
-}*/
 :root {
     --navBarTop_color : #EAF4EB;
     --button_color : #5DF5A4;
@@ -43,10 +17,6 @@ header{
     background-color: var(--navBarTop_color);
 }
 
-/*body{
-    background-color: var(--body_color);
-}*/
-
 .sconto__color{
     background-color: var(--golden_color);
 }
@@ -59,9 +29,6 @@ header{
     min-height: 75vh;
 }
 
-* {
-    box-sizing: border-box;
-}
 
 .header a,.header span{
     padding:16px;
@@ -164,6 +131,10 @@ a:hover{
     margin-left: auto;
 }
 
+.text-align-center{
+    text-align: center;
+}
+
 .d-flex {
     display: flex !important;
 }
@@ -237,13 +208,6 @@ a:hover{
     padding-left: 0.5rem !important;
 }
 
-.link-secondary {
-    color: #6c757d;
-}
-.link-secondary:hover, .link-secondary:focus {
-    color: #565e64;
-}
-
 .link-dark {
     color: #212529;
 }
@@ -267,16 +231,8 @@ a:hover{
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.text-end {
-    text-align: right !important;
-}
-
 .d-block {
     display: block !important;
-}
-
-.text-end {
-    text-align: right!important;
 }
 
 .rounded-circle {
@@ -287,11 +243,6 @@ body{
     display:flex;
     flex-direction:column;
     height:100vh; margin:0;
-}
-
-.py-3 {
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
 }
 
 .my-4 {
@@ -336,26 +287,7 @@ body{
 .lh-1 {
     line-height: 1 !important;
 }
-.nav {
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
 
-.justify-content-end {
-    justify-content: flex-end !important;
-}
-
-.list-unstyled {
-    padding-left: 0;
-    list-style: none;
-}
-
-.ms-3 {
-    margin-left: 1rem !important;
-}
 .badge:after{
     content:attr(value);
     font-size:12px;

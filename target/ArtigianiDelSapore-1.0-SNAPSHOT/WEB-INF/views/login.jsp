@@ -16,34 +16,36 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="vhPage login-section">
-    <div class="div-container">
-        <div class="form-login">
-            <div class="container-input">
-                <div>
-                    <label>Email</label>
+<section class="login-section">
+    <div class="vhPage">
+        <div class="div-container">
+            <div class="form-login">
+                <div class="container-input">
+                    <div>
+                        <label for="emailId">Email</label>
+                    </div>
+                    <div>
+                        <input id="emailId" type="text">
+                    </div>
                 </div>
-                <div>
-                    <input id="emailId" type="text">
+                <div class="container-input">
+                    <div>
+                        <label for="passwordId">Password</label>
+                    </div>
+                    <div>
+                        <input id="passwordId" type="password">
+                    </div>
                 </div>
-            </div>
-            <div class="container-input">
-                <div>
-                    <label>Password</label>
+                <div class="container-input">
+                    <div>
+                        <label for="ricordamiId">Ricordami</label>
+                        <input id="ricordamiId" type="checkbox">
+                    </div>
                 </div>
-                <div>
-                    <input id="passwordId" type="password">
-                </div>
-            </div>
-            <div class="container-input">
-                <div>
-                    <label>Ricordami</label>
-                    <input id="ricordamiId" type="checkbox">
-                </div>
-            </div>
-            <div class="button-accedi">
-                <div>
-                    <button onclick="accedi()">Accedi</button>
+                <div class="button-accedi">
+                    <div>
+                        <button onclick="accedi()">Accedi</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -35,7 +35,6 @@
             <thead>
             <tr>
                 <th>Nome</th>
-                <th>Descrizione</th>
                 <th>Prezzo</th>
                 <th>Sconto</th>
                 <th>Quantità attuale</th>
@@ -46,7 +45,6 @@
             <%for(Prodotti p: prodotti){%>
             <tr>
                 <td data-head="Nome"><%=p.getNome()%></td>
-                <td data-head="Descrizione"><%=p.getDescrizione()%></td>
                 <td data-head="Prezzo"><%=p.getPrezzo()%></td>
                 <td data-head="Sconto"><%=p.getSconto()%></td>
                 <td data-head="Quantita attuale"><%=p.getQuantitaAttuale()%></td>
@@ -66,7 +64,6 @@
             <tfoot>
             <tr>
                 <th>Nome</th>
-                <th>Descrizione</th>
                 <th>Prezzo</th>
                 <th>Sconto</th>
                 <th>Quantità attuale</th>

@@ -4,6 +4,8 @@
     margin-top: 20px;
     background-color: rgb(73,212,38);
     cursor: pointer;
+    margin-left: 1rem;
+    border-radius: calc(var(--curve)*1px);
 }
 
 #dataTable {

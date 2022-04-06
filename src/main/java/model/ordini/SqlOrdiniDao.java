@@ -99,7 +99,7 @@ public class SqlOrdiniDao implements OrdiniDao{
     }
 
     @Override
-    public void consegnaOrdine(int idOrdine,int ksStatoOrdini) throws SQLException {
+    public void modificaStatoOrdine(int idOrdine,int ksStatoOrdini) throws SQLException {
         try (Connection con = Connect.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE Ordini SET ksStatoOrdini=? WHERE idOrdini=?",
                     Statement.RETURN_GENERATED_KEYS);

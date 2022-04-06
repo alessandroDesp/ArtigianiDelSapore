@@ -27,7 +27,6 @@ public class Connect
             p.setRemoveAbandoned(true);
             datasource = new DataSource();
             datasource.setPoolProperties(p);
-            System.out.println("prova");
         }
         return datasource.getConnection();
     }

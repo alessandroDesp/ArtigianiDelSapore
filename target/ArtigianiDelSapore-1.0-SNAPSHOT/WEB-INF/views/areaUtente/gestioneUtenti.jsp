@@ -50,9 +50,11 @@
                 <td data-head="Email"><%=ut.getEmail()%></td>
                 <td data-head="Ruolo"><%=Utilita.getRuoloString(ut.getKsRuolo())%></td>
                 <td data-head="Azione">
+                    <%if(u.getIdUtente()!=ut.getIdUtente()){%>
                     <a class="fas fa-edit tooltip myBtn" onclick="iconModificaPermessi(<%=ut.getIdUtente()%>,<%=ut.getKsRuolo()%>)">
                       <span class="tooltip-text">Modifica permessi</span>
                     </a>
+                    <%}%>
                 </td>
 
             </tr>

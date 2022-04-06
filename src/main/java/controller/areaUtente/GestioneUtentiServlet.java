@@ -19,23 +19,26 @@ public class GestioneUtentiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Utente> us= UtenteService.getUtente(request);
-        if(us.get().getKsRuolo()!=1)
+        if(!us.isPresent())
         {
             response.sendRedirect("./");
         }
-        else
-        {
-            UtenteDAO dao = new SqlUtenteDao();
-            try {
-                List<Utente> listaUtente = dao.getAll();
-                RequestDispatcher requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneUtenti.jsp");
-                request.setAttribute("listaUtente",listaUtente);
-                request.setAttribute("Tipo",4);
-                requestDispatcher.forward(request,response);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+        else {
+            if (us.get().getKsRuolo() != 1) {
+                response.sendRedirect("./");
+            } else {
+                UtenteDAO dao = new SqlUtenteDao();
+                try {
+                    List<Utente> listaUtente = dao.getAll();
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneUtenti.jsp");
+                    request.setAttribute("listaUtente", listaUtente);
+                    request.setAttribute("Tipo", 4);
+                    requestDispatcher.forward(request, response);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
+            }
         }
     }
 

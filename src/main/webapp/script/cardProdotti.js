@@ -28,16 +28,9 @@ function aggiungiCarrello(idProdotto){
             if(result.Ris == 1) {
                 quantitaCarrello = 1 * $("#iconCarrello").attr("value") + 1;
                 $("#iconCarrello").attr("value",quantitaCarrello);
-                Swal.fire({
-                    icon: 'success',
-                    title: result.Mess,
-                })
+                toastr["success"](result.Mess)
             }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Errore',
-                    text: result.Mess,
-                })
+                toastr["warning"](result.Mess)
             }
         }
     });
@@ -56,16 +49,9 @@ function aggiungiPreferiti(idProdotto){
         data: data,
         success: function (result) {
             if(result.Ris == 1) {
-                Swal.fire({
-                    icon: 'success',
-                    title: result.Mess,
-                })
+                toastr["success"](result.Mess)
             }else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Errore',
-                    text: result.Mess,
-                })
+                toastr["warning"](result.Mess)
             }
         }
     });

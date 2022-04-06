@@ -32,12 +32,12 @@ public class DettagliOrdineServlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute(utility.Utilita.SESSION_USER, us.get());
             try {
-                if(daoOrdini.checkUtenteOrdine(us.get().getIdUtente(),idOrdine)){
-                Ordini ordine = daoOrdini.getOrdiniById(idOrdine);
-                List<Prodotti> prodottiList = daoOrdiniProdotti.getProdottiDaOrdiniProdotti(idOrdine);
-                requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/dettagliOrdine.jsp");
-                request.setAttribute("listaProdotti", prodottiList);
-                request.setAttribute("ordine", ordine);
+                if(daoOrdini.checkUtenteOrdine(us.get().getIdUtente(),idOrdine)||us.get().getKsRuolo()==2||us.get().getKsRuolo()==1){
+                    Ordini ordine = daoOrdini.getOrdiniById(idOrdine);
+                    List<Prodotti> prodottiList = daoOrdiniProdotti.getProdottiDaOrdiniProdotti(idOrdine);
+                    requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/dettagliOrdine.jsp");
+                    request.setAttribute("listaProdotti", prodottiList);
+                    request.setAttribute("ordine", ordine);
                 }else{
                     throw new PermissionDeniedException();
                 }

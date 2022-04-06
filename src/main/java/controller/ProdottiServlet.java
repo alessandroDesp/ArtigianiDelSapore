@@ -4,6 +4,8 @@ import model.categoria.Categoria;
 import model.categoria.CategoriaDao;
 import model.categoria.SqlCategoriaDao;
 import model.categoria.categoriaException.CategoriaNotFoundException;
+import model.foto.FotoDao;
+import model.foto.SqlFotoDao;
 import model.prodotti.Prodotti;
 import model.prodotti.ProdottiDao;
 import model.prodotti.SqlProdottiDao;
@@ -35,12 +37,16 @@ public class ProdottiServlet extends HttpServlet {
         int numeroPaginaCalcolato = numeroPagina - 1;
         CategoriaDao categoriaDao = new SqlCategoriaDao();
         ProdottiCategoriaDao prodottiCategoriaDao = new SqlProdottiCategoriaDao();
+        FotoDao daoFoto = new SqlFotoDao();
         RequestDispatcher requestDispatcher;
         try {
             Categoria categoria = categoriaDao.getCategoriaByNome(nomeCategoria);
             if(categoria!=null) {
                 int numeroProdottiTotali = prodottiCategoriaDao.getNumeroProdottiByCategoriaId(categoria.getId());
                 List<Prodotti> prodotti = prodottiCategoriaDao.getProdottiByCategoriaId(categoria.getId(),numeroPaginaCalcolato);
+                for(Prodotti p: prodotti){
+                    p.setFotoPath(daoFoto.getFotoByProdottoId(p.getIdProdotti()));
+                }
                 requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/prodotti.jsp");
                 request.setAttribute("listaProdotti", prodotti);
                 request.setAttribute("numeroPagina", numeroPagina);

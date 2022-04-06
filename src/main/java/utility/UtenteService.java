@@ -1,9 +1,11 @@
 package utility;
 
+import com.mysql.cj.exceptions.UnableToConnectException;
 import model.listaDesideri.ListaDesideri;
 import model.listaDesideri.ListaDesideriDao;
 import model.listaDesideri.SqlListaDesideriDao;
 import model.listaDesideri.listaDesideriException.ListaDesideriNotFoundException;
+import model.prodotti.Prodotti;
 import model.utente.SqlUtenteDao;
 import model.utente.Utente;
 import model.utente.UtenteDAO;
@@ -13,6 +15,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class UtenteService {
@@ -22,6 +26,10 @@ public class UtenteService {
         String tokenAuth="";
         HttpSession session=request.getSession(true);
         Utente us=(Utente)session.getAttribute(utility.Utilita.SESSION_USER);
+        List<Prodotti> prodottiList=(List<Prodotti>)session.getAttribute(Utilita.SESSION_CARRELLO);
+        if(prodottiList==null){
+            session.setAttribute(Utilita.SESSION_CARRELLO,new ArrayList<Prodotti>());
+        }
         if(us!=null)
         {
             return Optional.of(us);

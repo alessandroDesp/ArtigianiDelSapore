@@ -25,50 +25,52 @@
 %>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
 <section>
-    <%if(prodotti.isEmpty()) {%>
-    <section class="vhPage">
-        <div class="empty-datatable">
-            <p class="is-empty">Carrello vuoto, aggiungi un prodotto al carrello per poterlo visualizzare in questa sezione</p>
+    <div class="vhPage">
+        <%if(prodotti.isEmpty()) {%>
+
+            <div class="empty-datatable">
+                <p class="is-empty">Carrello vuoto, aggiungi un prodotto al carrello per poterlo visualizzare in questa sezione</p>
+            </div>
+        <%}else{%>
+        <div class="title-Prodotti">
+            <h1 class="">Carrello</h1>
         </div>
-    </section>
-    <%}else{%>
-    <section class="title-Prodotti">
-        <h1 class="">Carrello</h1>
-    </section>
-    <section class="vhPage75" id="product-list">
-        <div class="container">
-            <ul class="cards">
-                <% for (Prodotti pd : prodotti) {
-                    i +=1;
-                    if(pd.getSconto()>0){
-                        costoTotale += (Math.round((pd.getPrezzo() - (pd.getPrezzo()*pd.getSconto()/100))*100.0)/100.0) * pd.getQuantitaDaAcquistare();
-                    }else {
-                        costoTotale += pd.getPrezzo() * pd.getQuantitaDaAcquistare();
-                    }
-                %>
-                <jsp:include page="/WEB-INF/views/partials/cardCarrello.jsp">
-                    <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
-                    <jsp:param name="nome" value="<%=pd.getNome()%>"/>
-                    <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
-                    <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
-                    <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
-                    <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
-                    <jsp:param name="quantitaDaAcquistare" value="<%=pd.getQuantitaDaAcquistare()%>"/>
-                </jsp:include>
-                <%}%>
-            </ul>
-        </div>
-    </section>
-    <section id="ordine-list">
-        <div class="container-list">
-            <div class="card-list">
-                 <p>Totale provvisorio (<%=i%> Articoli)</p>
-                 <span  id="costoTotaleId"><%=(Math.round((costoTotale)*100.0)/100.0)%></span>€
-                 <button class="pagamento-button" onclick="procediAlPagamento(<%=i%>)">Procedi al pagamento</button>
+        <div id="product-list">
+            <div class="container">
+                <ul class="cards">
+                    <% for (Prodotti pd : prodotti) {
+                        i +=1;
+                        if(pd.getSconto()>0){
+                            costoTotale += (Math.round((pd.getPrezzo() - (pd.getPrezzo()*pd.getSconto()/100))*100.0)/100.0) * pd.getQuantitaDaAcquistare();
+                        }else {
+                            costoTotale += pd.getPrezzo() * pd.getQuantitaDaAcquistare();
+                        }
+                    %>
+                    <jsp:include page="/WEB-INF/views/partials/cardCarrello.jsp">
+                        <jsp:param name="id" value="<%=pd.getIdProdotti()%>"/>
+                        <jsp:param name="nome" value="<%=pd.getNome()%>"/>
+                        <jsp:param name="prezzo" value="<%=pd.getPrezzo()%>"/>
+                        <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
+                        <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
+                        <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
+                        <jsp:param name="quantitaDaAcquistare" value="<%=pd.getQuantitaDaAcquistare()%>"/>
+                        <jsp:param name="fotoPath" value="<%=pd.getFotoPath()%>"/>
+                    </jsp:include>
+                    <%}%>
+                </ul>
             </div>
         </div>
-    </section>
-    <%}%>
+        <div id="ordine-list">
+            <div class="container-list">
+                <div class="card-list">
+                     <p>Totale provvisorio (<%=i%> Articoli)</p>
+                     <span  id="costoTotaleId"><%=(Math.round((costoTotale)*100.0)/100.0)%></span>€
+                     <button class="pagamento-button" onclick="procediAlPagamento(<%=i%>)">Conferma ordine</button>
+                </div>
+            </div>
+        </div>
+        <%}%>
+    </div>
 </section>
 <%@ include file="/WEB-INF/views/partials/footer.jsp" %>
 </body>

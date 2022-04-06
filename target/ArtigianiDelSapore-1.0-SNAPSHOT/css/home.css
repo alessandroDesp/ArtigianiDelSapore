@@ -5,9 +5,13 @@
 
 }
 
-section div img{
-    text-align: center;
-    height: 500px;
+section div .image-home{
+    width: 1000px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 2rem;
 }
 .prodotti{
     padding-top: 20px;
@@ -17,4 +21,34 @@ section div img{
 
 .body-color{
     background-color: var(--body_color);
+}
+
+.content-grid{
+    display: grid;
+    grid-template-columns: 17rem 17rem 17rem;
+    justify-content: center;
+}
+
+.border-right{
+    border-right: gray solid 1px;
+}
+
+.fw-unset{
+    font-weight: unset;
+}
+
+.padding_2{
+    padding: 2rem;
+}
+
+@media screen and (max-width: 1030px){
+    section div .image-home{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 780px){
+    .content-grid{
+        display: unset;
+    }
 }

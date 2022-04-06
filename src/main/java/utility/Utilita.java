@@ -4,8 +4,10 @@ import model.prodotti.Prodotti;
 import model.ruolo.Ruolo;
 import model.statoOrdini.StatoOrdini;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -25,10 +27,6 @@ public class Utilita
      */
     public static final int lenghtAuth=64;
     /**
-     * API Key di Stripe
-     */
-    public static final String stripeKey="sk_test_51KLDXkBGMwZsdNHVNexZB0QYRKoufGyY1XkvZqIvRUncWZIrTwuxFmWA2v9mfWkRHkrdzHmeQfFHsQGKHWu7SYvO00PAVrndqP";
-    /**
      * Nome dell'attributo utente all'interno della sessione
      */
     public static final String SESSION_USER="idUsSe";
@@ -40,6 +38,10 @@ public class Utilita
      * Nome dell'attributo carrello all'interno della sessione
      */
     public static final String SESSION_CARRELLO="idCa";
+    /**
+     * Nome dell'attributo pagamento all'interno della sessione
+     */
+    public static final String SESSION_PAGAMENTO="idPa";
     /**
      * Nome del ID dell'utente per il cookie
      */
@@ -105,6 +107,8 @@ public class Utilita
         for (Prodotti p : prodottiList){
             if(p.getSconto()>0){
                 prezzoTotale += ((p.getPrezzo() - (p.getPrezzo() * (p.getSconto()/100))) * p.getQuantitaDaAcquistare());
+                prezzoTotale = Math.round(prezzoTotale*100);
+                prezzoTotale = prezzoTotale/100;
             }else{
                 prezzoTotale += (p.getPrezzo() * p.getQuantitaDaAcquistare());
             }
@@ -116,6 +120,14 @@ public class Utilita
     public static boolean contieneParametro(HttpServletRequest request, String nome)
     {
         return request.getParameter(nome)!=null && request.getParameter(nome)!="";
+    }
+
+    public static boolean contieneFile(HttpServletRequest request, String nome) throws ServletException, IOException {
+        if(request.getPart(nome).getSize()>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

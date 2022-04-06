@@ -16,66 +16,68 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/partials/header.jsp" %>
-<section class="registrazione-section">
-    <div class="div-container vhPage">
-        <div class="form-registrazione">
-            <div class="column-registrazione">
-                <div class="container-input">
-                    <div>
-                        <label>Nome</label>
+<section class="registrazione-section ">
+    <div class="vhPage">
+        <div class="div-container">
+            <div class="form-registrazione">
+                <div class="column-registrazione">
+                    <div class="container-input">
+                        <div>
+                            <label for="nomeId">Nome</label>
+                        </div>
+                        <div>
+                            <input id="nomeId" type="text">
+                        </div>
                     </div>
-                    <div>
-                        <input id="nomeId" type="text">
-                    </div>
-                </div>
-                <div class="container-input">
-                    <div>
-                        <label>Cognome</label>
-                    </div>
-                    <div>
-                        <input id="cognomeId" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="column-registrazione">
-                <div class="container-input">
-                    <div>
-                        <label>Codice fiscale</label>
-                    </div>
-                    <div>
-                        <input id="codiceFiscaleId" type="text">
+                    <div class="container-input">
+                        <div>
+                            <label for="cognomeId">Cognome</label>
+                        </div>
+                        <div>
+                            <input id="cognomeId" type="text">
+                        </div>
                     </div>
                 </div>
-                <div class="container-input">
-                    <div>
-                        <label>Data di nascita</label>
+                <div class="column-registrazione">
+                    <div class="container-input">
+                        <div>
+                            <label for="codiceFiscaleId">Codice fiscale</label>
+                        </div>
+                        <div>
+                            <input id="codiceFiscaleId" type="text">
+                        </div>
                     </div>
-                    <div>
-                        <input id="dataNascitaId" type="date" required>
-                    </div>
-                </div>
-            </div>
-            <div class="column-registrazione">
-                <div class="container-input">
-                    <div>
-                        <label>Indirizzo email</label>
-                    </div>
-                    <div>
-                        <input id="indirizzoEmailId" type="text">
-                    </div>
-                </div>
-                <div class="container-input">
-                    <div>
-                        <label>Password</label>
-                    </div>
-                    <div>
-                        <input id="passwordId" type="password">
+                    <div class="container-input">
+                        <div>
+                            <label for="dataNascitaId">Data di nascita</label>
+                        </div>
+                        <div>
+                            <input id="dataNascitaId" type="date" required>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="button-registrati">
-                <div>
-                    <button onclick="registrati()">registrati</button>
+                <div class="column-registrazione">
+                    <div class="container-input">
+                        <div>
+                            <label for="indirizzoEmailId">Indirizzo email</label>
+                        </div>
+                        <div>
+                            <input id="indirizzoEmailId" type="text">
+                        </div>
+                    </div>
+                    <div class="container-input">
+                        <div>
+                            <label for="passwordId">Password</label>
+                        </div>
+                        <div>
+                            <input id="passwordId" type="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="button-registrati">
+                    <div>
+                        <button onclick="registrati()">Registrati</button>
+                    </div>
                 </div>
             </div>
         </div>

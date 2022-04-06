@@ -45,7 +45,7 @@
             <tbody>
             <%for(Ordini o :ordini){%>
             <tr>
-                <td data-head="Data"><%=o.getData()%></td>
+                <td data-head="Data"><%=Utilita.convertDateToView(o.getData())%></td>
                 <td data-head="Prezzo totale"><%=o.getPrezzoTotale()%></td>
                 <td data-head="Stato"><%=Utilita.getStatoString(o.getKsStatoOrdini())%></td>
                 <td data-head="Azione">

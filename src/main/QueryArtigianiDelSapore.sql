@@ -111,4 +111,17 @@ CREATE TABLE ListaDesideriProdotti
 	FOREIGN KEY (ksProdotti) REFERENCES Prodotti(idProdotti)
 );
 
+CREATE TABLE pagamentoOrdini
+(
+    idPagamentoOrdini INT NOT NULL AUTO_INCREMENT,
+    ksOrdini INT NOT NULL,
+    indirizzoEmail VARCHAR(65) NOT NULL,
+    indirizzo VARCHAR(65) NOT NULL,
+    citta VARCHAR(65) NOT NULL,
+    nazione VARCHAR(65) NOT NULL,
+    codicePostale VARCHAR(65) NOT NULL,
+    PRIMARY KEY (idPagamentoOrdini),
+    FOREIGN KEY (ksOrdini) REFERENCES Ordini(idOrdini),
+);
+
 

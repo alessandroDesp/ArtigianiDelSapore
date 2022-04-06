@@ -92,10 +92,37 @@ public class SqlProdottiDao implements ProdottiDao{
     }
 
     @Override
+    public List<Prodotti> getProdottoBySconto(int numeroPagina) throws SQLException {
+        ArrayList<Prodotti> prodotti = new ArrayList<>();
+        try (Connection con = Connect.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Prodotti WHERE sconto>0 ORDER BY sconto DESC LIMIT 12 OFFSET ?",Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1,numeroPagina * 12);
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ){
+                prodotti.add(createProdotti(rs));
+            }
+        }
+        return prodotti;
+    }
+
+    @Override
     public int getNumeroProdottiByName(String nProdotto) throws SQLException {
         try (Connection con = Connect.getConnection()){
             PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM Prodotti WHERE nome LIKE ?");
             ps.setString(1, "%" + nProdotto + "%");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                return rs.getInt(1);
+            }else {
+                return 0;
+            }
+        }
+    }
+
+    @Override
+    public int getNumeroProdottiBySconto() throws SQLException {
+        try (Connection con = Connect.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT COUNT(*) FROM Prodotti WHERE sconto > 0");
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
                 return rs.getInt(1);

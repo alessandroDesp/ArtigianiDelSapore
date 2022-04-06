@@ -36,9 +36,9 @@ INSERT INTO Ordini(ksUtente, ksStatoOrdini, prezzoTotale, data)
 VALUES(2,1,300,'2022-06-08');
 
 INSERT INTO Prodotti(nome, prezzo, sconto, quantitaAttuale,quantitaVenduta,descrizione)
-VALUES("Rigatoni",8,0,200,35,"bella");	
+VALUES("Rigatoni",8,0,200,35,"bella");
 INSERT INTO Prodotti(nome, prezzo, sconto, quantitaAttuale,quantitaVenduta,descrizione)
-VALUES("Falanghina",14,1,55,70,"bel vino");																					
+VALUES("Falanghina",14,1,55,70,"bel vino");
 
 INSERT INTO OrdiniProdotti(ksOrdini, ksProdotti, quantita)
 VALUES(1,1,3);

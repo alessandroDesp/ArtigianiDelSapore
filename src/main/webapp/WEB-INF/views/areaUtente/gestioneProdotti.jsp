@@ -38,7 +38,6 @@
             <thead>
             <tr>
                 <th>Nome</th>
-                <th>Descrizione</th>
                 <th>Prezzo</th>
                 <th>Sconto</th>
                 <th>Quantità attuale</th>
@@ -51,7 +50,6 @@
             <%for(Prodotti p: prodotti){%>
             <tr>
                 <td data-head="Nome"><%=p.getNome()%></td>
-                <td data-head="Descrizione"><%=p.getDescrizione()%></td>
                 <td data-head="Prezzo"><%=p.getPrezzo()%></td>
                 <td data-head="Sconto"><%=p.getSconto()%></td>
                 <td data-head="Quantita Attuale"><%=p.getQuantitaAttuale()%></td>
@@ -74,7 +72,6 @@
             <tfoot>
             <tr>
                 <th>Nome</th>
-                <th>Descrizione</th>
                 <th>Prezzo</th>
                 <th>Sconto</th>
                 <th>Quantità attuale</th>
@@ -98,7 +95,7 @@
         </div>
         <div class="modal-body">
             <div class="div-container">
-                <form action="CreaProdotto" method="post" class="form-tag">
+                <form action="CreaProdotto" method="post" class="form-tag" enctype="multipart/form-data">
                     <div class="column-prodotto">
                         <div class="container-input">
                             <div>
@@ -157,6 +154,14 @@
                                 <input id="categorieAggiunte" name="categorieAggiunte" type="text" disabled>
                                 <input id="categorieAggiunteId" name="categorieAggiunteId" type="hidden">
                             </div>
+                        </div>
+                    </div>
+                    <div class="container-input">
+                        <div>
+                            <label for="cover">Foto</label>
+                        </div>
+                        <div>
+                            <input type="file" name="cover" id="cover">
                         </div>
                     </div>
                     <div class="container-input">

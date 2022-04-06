@@ -38,7 +38,7 @@ function changeQuantitaDaAcquistare(idProdotto){
 
 function procediAlPagamento(numeroArticoli){
     if(numeroArticoli>0){
-        location.href='Pagamento'
+        location.href='ConfermaOrdine'
     }else{
         Swal.fire({
             icon: 'error',

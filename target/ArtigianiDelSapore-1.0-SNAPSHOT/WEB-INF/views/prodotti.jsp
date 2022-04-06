@@ -55,6 +55,7 @@
                        <jsp:param name="sconto" value="<%=pd.getSconto()%>"/>
                        <jsp:param name="quantita_att" value="<%=pd.getQuantitaAttuale()%>"/>
                        <jsp:param name="descrizione" value="<%=pd.getDescrizione()%>"/>
+                       <jsp:param name="fotoPath" value="<%=pd.getFotoPath()%>"/>
                    </jsp:include>
                 <%}%>
             </ul>

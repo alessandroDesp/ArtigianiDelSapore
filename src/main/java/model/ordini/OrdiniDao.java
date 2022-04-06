@@ -8,6 +8,6 @@ public interface OrdiniDao {
     List<Ordini> getOrdiniByUtente(int id) throws SQLException;
     Ordini getOrdiniById(int idOrdine) throws SQLException;
     Ordini aggiungiOrdine(int idUtente,int ksStatoOrdini,float prezzoTotale) throws SQLException;
-    void consegnaOrdine(int idOrdine,int ksStatoOrdini) throws SQLException;
+    void modificaStatoOrdine(int idOrdine,int ksStatoOrdini) throws SQLException;
     boolean checkUtenteOrdine(int idUtente,int idOrdine) throws SQLException;
 }

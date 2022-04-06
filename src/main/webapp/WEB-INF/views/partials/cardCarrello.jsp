@@ -11,7 +11,7 @@
 
 <li class="card">
     <div>
-        <img src="images/img1.jpg" class="card__image" alt="" />
+        <img src="covers/${param.fotoPath}" class="card__image" class="card__image" alt="" />
         <div class="card__overlay">
             <div class="card__header">
                 <div class="card__header-text">
@@ -33,7 +33,7 @@
                 <input type="number" value="${param.prezzo}" id="prezzoId${param.id}" hidden>
                 <%}%>
                 <p>Quantita' disponibile:${param.quantita_att}</p>
-                <p><label for="quantitaDaAcquistare${param.id}">Quantita:</label><input type="number" min="1" value="${param.quantitaDaAcquistare}" onchange="changeQuantitaDaAcquistare(${param.id})" id="quantitaDaAcquistare${param.id}"></p>
+                <div><label for="quantitaDaAcquistare${param.id}">Quantita:</label><input type="number" min="1" value="${param.quantitaDaAcquistare}" onchange="changeQuantitaDaAcquistare(${param.id})" id="quantitaDaAcquistare${param.id}"></div>
                 <input type="number" value="${param.quantitaDaAcquistare}" id="quantitaPrecedente${param.id}" hidden>
             </div>
 

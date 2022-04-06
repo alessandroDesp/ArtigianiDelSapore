@@ -19,23 +19,26 @@ public class GestioneCategorieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Optional<Utente> us= UtenteService.getUtente(request);
-        if(!((us.get().getKsRuolo()==1) || (us.get().getKsRuolo()==2)))
+        if(!us.isPresent())
         {
             response.sendRedirect("./");
         }
-        else
-        {
-            CategoriaDao dao = new SqlCategoriaDao();
-            try {
-                List<Categoria> listaCategoria = dao.getAll();
-                RequestDispatcher requestDispatcher=request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneCategorie.jsp");
-                request.setAttribute("listaCategoria",listaCategoria);
-                request.setAttribute("Tipo",6);
-                requestDispatcher.forward(request,response);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+        else {
+            if (!((us.get().getKsRuolo() == 1) || (us.get().getKsRuolo() == 2))) {
+                response.sendRedirect("./");
+            } else {
+                CategoriaDao dao = new SqlCategoriaDao();
+                try {
+                    List<Categoria> listaCategoria = dao.getAll();
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/areaUtente/gestioneCategorie.jsp");
+                    request.setAttribute("listaCategoria", listaCategoria);
+                    request.setAttribute("Tipo", 6);
+                    requestDispatcher.forward(request, response);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
 
+            }
         }
     }
 

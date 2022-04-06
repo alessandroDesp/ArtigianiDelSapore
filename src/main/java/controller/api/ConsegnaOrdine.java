@@ -21,7 +21,7 @@ public class ConsegnaOrdine extends HttpServlet {
             int idOrdine = Integer.parseInt(request.getParameter("idOrdine"));
             OrdiniDao dao = new SqlOrdiniDao();
             try {
-                dao.consegnaOrdine(idOrdine, 3);
+                dao.modificaStatoOrdine(idOrdine, 3);
                 obj.put("Ris", 1);
                 obj.put("Mess", "Fatto");
                 response.getOutputStream().print(obj.toString());

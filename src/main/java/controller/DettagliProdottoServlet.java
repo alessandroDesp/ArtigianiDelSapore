@@ -1,5 +1,7 @@
 package controller;
 
+import model.foto.FotoDao;
+import model.foto.SqlFotoDao;
 import model.prodotti.Prodotti;
 import model.prodotti.ProdottiDao;
 import model.prodotti.SqlProdottiDao;
@@ -20,6 +22,7 @@ public class DettagliProdottoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProdotto = Integer.parseInt(request.getParameter("id"));
         ProdottiDao dao = new SqlProdottiDao();
+        FotoDao daoFoto = new SqlFotoDao();
         RequestDispatcher requestDispatcher;
         Optional<Utente> us= UtenteService.getUtente(request);
         if(us.isPresent())
@@ -29,6 +32,7 @@ public class DettagliProdottoServlet extends HttpServlet {
         }
         try {
             Prodotti prodotto = dao.getProdottoById(idProdotto);
+            prodotto.setFotoPath(daoFoto.getFotoByProdottoId(idProdotto));
             requestDispatcher = request.getRequestDispatcher("/WEB-INF/views/dettagliProdotto.jsp");
             request.setAttribute("prodotto",prodotto);
         } catch (SQLException e) {
